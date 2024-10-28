@@ -1,13 +1,8 @@
 package com.ironhack.petshelter.dataloader;
 
-import com.ironhack.petshelter.model.Dog;
-import com.ironhack.petshelter.model.Role;
-import com.ironhack.petshelter.model.Shelter;
-import com.ironhack.petshelter.model.User;
-import com.ironhack.petshelter.service.DogService;
-import com.ironhack.petshelter.service.RoleService;
-import com.ironhack.petshelter.service.ShelterService;
-import com.ironhack.petshelter.service.UserService;
+import com.ironhack.petshelter.model.*;
+import com.ironhack.petshelter.repository.ShelterRepository;
+import com.ironhack.petshelter.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,6 +15,7 @@ public class DataLoader implements CommandLineRunner {
     private final RoleService roleService;
     private final ShelterService shelterService;
     private final DogService dogService;
+    private final CatService catService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -44,5 +40,9 @@ public class DataLoader implements CommandLineRunner {
         Dog dog = new Dog();
         dog.setName("Dog1");
         dogService.save(dog);
+
+        Cat cat = new Cat();
+        cat.setName("Cat1");
+        catService.save(cat);
     }
 }
