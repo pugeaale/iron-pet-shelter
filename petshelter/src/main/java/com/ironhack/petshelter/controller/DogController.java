@@ -20,7 +20,7 @@ public class DogController {
      */
     @PostMapping("/dogs")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveShelter(@RequestBody Dog dog) {
+    public void saveDog(@RequestBody Dog dog) {
         dogService.save(dog);
     }
 }

@@ -4,9 +4,13 @@ import com.ironhack.petshelter.model.*;
 import com.ironhack.petshelter.repository.ShelterRepository;
 import com.ironhack.petshelter.service.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
@@ -16,6 +20,7 @@ public class DataLoader implements CommandLineRunner {
     private final ShelterService shelterService;
     private final DogService dogService;
     private final CatService catService;
+    private final AnimalService animalService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -44,5 +49,8 @@ public class DataLoader implements CommandLineRunner {
         Cat cat = new Cat();
         cat.setName("Cat1");
         catService.save(cat);
+
+        List<Animal> animals = animalService.getAnimals();
+        log.info("animals found : {}", animals.size());
     }
 }

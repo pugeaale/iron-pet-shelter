@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CatImpl implements CatService {
+public class CatServiceImpl implements CatService {
 
     private final CatRepository catRepository;
 
