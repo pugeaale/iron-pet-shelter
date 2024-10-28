@@ -78,6 +78,13 @@ Get a list of all cats
 * Get
 * /cats
 
+### Animals
+
+Get a list of all animals
+* Get
+* /animals
+
+
 ## Future work
 
 ## Extra links

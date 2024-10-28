@@ -10,11 +10,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Dog {
+public class Dog extends Animal {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    private String name;
+    public Dog(String name) {
+        super(name);
+    }
 }
