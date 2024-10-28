@@ -58,6 +58,16 @@ Get a list of all shelters
 * Get
 * /shelters
 
+### DOG
+
+Save a new dog
+* Post :
+* /dogs
+
+Get a list of all dogs
+* Get
+* /dogs
+
 ## Future work
 
 ## Extra links
