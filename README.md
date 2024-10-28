@@ -68,6 +68,16 @@ Get a list of all dogs
 * Get
 * /dogs
 
+### Cat
+
+Save a new cat
+* Post :
+* /cats
+
+Get a list of all cats
+* Get
+* /cats
+
 ## Future work
 
 ## Extra links
