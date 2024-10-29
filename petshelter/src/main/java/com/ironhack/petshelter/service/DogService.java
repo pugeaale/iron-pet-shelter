@@ -2,6 +2,8 @@ package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.model.Dog;
 
+import java.util.List;
+
 public interface DogService {
 
     /**
@@ -10,4 +12,10 @@ public interface DogService {
      * @return the saved dog
      */
     Dog save(Dog dog);
+    /**
+     * This method is used to retrieve all dog entities from the database.
+     *
+     * @return a List of all dog entities.
+     */
+    List<Dog> getDogs();
 }
