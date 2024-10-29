@@ -21,6 +21,7 @@ public class DataLoader implements CommandLineRunner {
     private final DogService dogService;
     private final CatService catService;
     private final AnimalService animalService;
+    private final AdopterService adopterService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -76,5 +77,10 @@ public class DataLoader implements CommandLineRunner {
 
         Shelter shelter1 = shelterService.getShelterById(1);
         log.info("shelter1 found : {}", shelter1.getName());
+
+        Adopter adopter = new Adopter();
+        adopter.setFirstName("brigitte");
+        adopter.setLastName("bardot");
+        adopterService.save(adopter);
     }
 }

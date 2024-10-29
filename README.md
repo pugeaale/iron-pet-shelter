@@ -28,6 +28,12 @@ MySQL
 
 ## Controllers and routes structure
 
+### Adopter
+
+Save a new adopter
+* POST
+* /adopters
+
 ### User
 
 Get a list of all users
