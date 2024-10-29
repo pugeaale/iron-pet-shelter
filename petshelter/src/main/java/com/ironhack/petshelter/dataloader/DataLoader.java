@@ -54,10 +54,17 @@ public class DataLoader implements CommandLineRunner {
         cat.setName("Cat1");
         catService.save(cat);
 
+        Cat cat2 = new Cat();
+        cat2.setName("cat2");
+        catService.save(cat2);
+
         List<Animal> animals = animalService.getAnimals();
         log.info("animals found : {}", animals.size());
 
         List<Dog> dogs = dogService.getDogs();
         log.info("dogs found : {}", dogs.size());
+
+        List<Cat> cats = catService.getCats();
+        log.info("cats found : {}", cats.size());
     }
 }
