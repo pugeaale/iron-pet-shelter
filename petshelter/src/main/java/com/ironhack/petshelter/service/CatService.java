@@ -2,6 +2,8 @@ package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.model.Cat;
 
+import java.util.List;
+
 public interface CatService {
 
     /**
@@ -10,4 +12,11 @@ public interface CatService {
      * @return the saved cat
      */
     Cat save(Cat cat);
+
+    /**
+     * This method is used to retrieve all cat entities from the database.
+     *
+     * @return a List of all cat entities.
+     */
+    List<Cat> getCats();
 }

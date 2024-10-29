@@ -71,11 +71,11 @@ Get a list of all dogs
 ### Cat
 
 Save a new cat
-* Post :
+* POST
 * /cats
 
 Get a list of all cats
-* Get
+* GET
 * /cats
 
 ### Animals
