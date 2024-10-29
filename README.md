@@ -48,14 +48,14 @@ Add a role to a user
 * Post :
 * /roles/add-to-user
 
-### SHELTER
+### Shelter
 
 Save a new shelter
-* Post :
+* POST
 * /shelters
 
 Get a list of all shelters
-* Get
+* GET
 * /shelters
 
 ### Dog
