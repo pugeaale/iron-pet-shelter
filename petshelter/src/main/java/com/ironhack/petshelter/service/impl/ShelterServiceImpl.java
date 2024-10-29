@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -28,5 +29,12 @@ public class ShelterServiceImpl implements ShelterService {
     public List<Shelter> getShelters() {
         log.info("Fetching all shelters");
         return shelterRepository.findAll();
+    }
+
+    @Override
+    public Shelter getShelterById(Integer id) {
+        log.info("Fetching shelter by id {}", id);
+        Optional<Shelter> shelter = shelterRepository.findById(id);
+        return shelter.orElse(null);
     }
 }

@@ -27,6 +27,17 @@ public class ShelterController {
     }
 
     /**
+     * Get a shelter by id
+     * @param id the id of the shelter to be retrieved
+     * @return the retrieved shelter
+     */
+    @GetMapping("/shelters/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Shelter getShelterById(@PathVariable Integer id) {
+        return shelterService.getShelterById(id);
+    }
+
+    /**
      * Save a new shelter
      *
      * @param shelter the shelter to be saved

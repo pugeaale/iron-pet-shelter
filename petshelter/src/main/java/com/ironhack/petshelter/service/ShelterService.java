@@ -18,4 +18,11 @@ public interface ShelterService {
      * @return a List of all shelter entities.
      */
     List<Shelter> getShelters();
+
+    /**
+     * This method is used to retrieve a shelter by id from the database.
+     * @param id the id of the shelter to be retrieved
+     * @return the retrieved shelter
+     */
+    Shelter getShelterById(Integer id);
 }
