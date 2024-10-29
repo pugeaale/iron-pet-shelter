@@ -73,5 +73,8 @@ public class DataLoader implements CommandLineRunner {
 
         List<Shelter> shelters = shelterService.getShelters();
         log.info("shelters found : {}", shelters.size());
+
+        Shelter shelter1 = shelterService.getShelterById(1);
+        log.info("shelter1 found : {}", shelter1.getName());
     }
 }

@@ -58,6 +58,11 @@ Get a list of all shelters
 * GET
 * /shelters
 
+Get a shelter by id
+* METHOD : GET
+* ROUTE : /shelters/{id}
+* Path variable : 'id' of the shelter 
+
 ### Dog
 
 Save a new dog
