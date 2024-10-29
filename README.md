@@ -58,14 +58,14 @@ Get a list of all shelters
 * Get
 * /shelters
 
-### DOG
+### Dog
 
 Save a new dog
-* Post :
+* POST
 * /dogs
 
 Get a list of all dogs
-* Get
+* GET
 * /dogs
 
 ### Cat
