@@ -23,6 +23,7 @@ public class DataLoader implements CommandLineRunner {
     private final AnimalService animalService;
     private final AdopterService adopterService;
     private final VeterinarianService veterinarianService;
+    private final EmployeeService employeeService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -88,5 +89,10 @@ public class DataLoader implements CommandLineRunner {
         veterinarian.setFirstName("gregory");
         veterinarian.setLastName("house");
         veterinarianService.save(veterinarian);
+
+        Employee employee = new Employee();
+        employee.setFirstName("ana");
+        employee.setLastName("mendoza");
+        employeeService.save(employee);
     }
 }

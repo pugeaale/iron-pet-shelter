@@ -40,6 +40,12 @@ Save a new Veterinarian
 * POST
 * /veterinarians
 
+### Employee
+
+Save a new Employee
+* POST
+* /employees
+
 ### User
 
 Get a list of all users
