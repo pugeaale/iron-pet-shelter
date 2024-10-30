@@ -34,6 +34,12 @@ Save a new adopter
 * POST
 * /adopters
 
+### Veterinarian
+
+Save a new Veterinarian
+* POST
+* /veterinarians
+
 ### User
 
 Get a list of all users
