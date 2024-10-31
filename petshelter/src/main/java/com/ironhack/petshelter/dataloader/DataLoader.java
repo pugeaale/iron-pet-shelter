@@ -100,6 +100,11 @@ public class DataLoader implements CommandLineRunner {
         employee.setLastName("mendoza");
         employeeService.save(employee);
 
+        Employee employee2 = new Employee();
+        employee2.setFirstName("tereza");
+        employee2.setLastName("mendoza");
+        employeeService.save(employee2);
+
         Employee employee1 = employeeService.getEmployeeById(1);
         log.info("employee1 found : {}", employee1.getLastName());
 
@@ -108,5 +113,8 @@ public class DataLoader implements CommandLineRunner {
 
         List<Adopter> adopters = adopterService.getAdopters();
         log.info("adopters found : {}", adopters.size());
+
+        List<Employee> employees = employeeService.getEmployees();
+        log.info("employees found : {}", employees.size());
     }
 }

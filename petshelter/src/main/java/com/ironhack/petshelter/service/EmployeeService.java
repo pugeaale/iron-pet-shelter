@@ -2,6 +2,8 @@ package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.model.Employee;
 
+import java.util.List;
+
 public interface EmployeeService {
 
     /**
@@ -10,6 +12,13 @@ public interface EmployeeService {
      * @return the saved employee
      */
     Employee save(Employee employee);
+
+    /**
+     * This method is used to retrieve all Employee entities from the database.
+     *
+     * @return a List of all Employee entities.
+     */
+    List<Employee> getEmployees();
     /**
      * This method is used to retrieve a employee by id from the database.
      * @param id the id of the employee to be retrieved
