@@ -1,10 +1,13 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -12,6 +15,17 @@ import org.springframework.web.bind.annotation.*;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+
+    /**
+     * Get a list of all Employees
+     *
+     * @return list of all Employees
+     */
+    @GetMapping("/employees")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Employee> getEmployees() {
+        return employeeService.getEmployees();
+    }
 
     /**
      * Get a employee by id

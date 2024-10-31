@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -29,5 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Fetching employee by id {}", id);
         Optional<Employee> employee = employeeRepository.findById(id);
         return employee.orElse(null);
+    }
+
+    @Override
+    public List<Employee> getEmployees() {
+        log.info("Fetching all employees");
+        return employeeRepository.findAll();
     }
 }

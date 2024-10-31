@@ -55,6 +55,10 @@ Save a new Employee
 * POST
 * /employees
 
+Get a list of all Employees
+* GET
+* /employees
+
 Get a Employee by id
 * METHOD : GET
 * ROUTE : /employees/{id}
