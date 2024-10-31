@@ -53,6 +53,11 @@ Get a list of all veterinarians
 * GET
 * /veterinarians
 
+Get a Veterinarian by id
+* METHOD : GET
+* ROUTE : /veterinarians/{id}
+* Path variable : 'id' of the Veterinarian
+
 ### Employee
 
 Save a new Employee

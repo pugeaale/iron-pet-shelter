@@ -28,6 +28,17 @@ public class VeterinarianController {
     }
 
     /**
+     * Get a Veterinarian by id
+     * @param id the id of the Veterinarian to be retrieved
+     * @return the retrieved Veterinarian
+     */
+    @GetMapping("/veterinarians/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Veterinarian getVeterinarianById(@PathVariable Integer id) {
+        return veterinarianService.getVeterinarianById(id);
+    }
+
+    /**
      * Save a new veterinarian
      *
      * @param veterinarian the veterinarian to be saved
