@@ -134,6 +134,10 @@ Get a list of all animals
 * Get
 * /animals
 
+Get an Animal by id
+* METHOD : GET
+* ROUTE : /animals/{id}
+* Path variable : 'id' of the Animal
 
 ## Future work
 

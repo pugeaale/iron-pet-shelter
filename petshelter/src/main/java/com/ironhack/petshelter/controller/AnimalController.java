@@ -17,6 +17,17 @@ public class AnimalController {
     private final AnimalService animalService;
 
     /**
+     * Get an Animal by id
+     * @param id the id of the Animal to be retrieved
+     * @return the retrieved Animal
+     */
+    @GetMapping("/animals/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Animal getAdopterById(@PathVariable Integer id) {
+        return animalService.getAnimalById(id);
+    }
+
+    /**
      * Get a list of all animals
      *
      * @return list of all animals

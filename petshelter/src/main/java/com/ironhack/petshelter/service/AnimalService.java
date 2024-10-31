@@ -12,4 +12,10 @@ public interface AnimalService {
      * @return a List of all Animal entities.
      */
     List<Animal> getAnimals();
+    /**
+     * This method is used to retrieve an Animal by id from the database.
+     * @param id the id of the Animal to be retrieved
+     * @return the retrieved Animal
+     */
+    Animal getAnimalById(Integer id);
 }

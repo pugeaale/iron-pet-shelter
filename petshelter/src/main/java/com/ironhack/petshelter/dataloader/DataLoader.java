@@ -127,5 +127,8 @@ public class DataLoader implements CommandLineRunner {
 
         Veterinarian veterinarian1 = veterinarianService.getVeterinarianById(1);
         log.info("veterinarian1 found : {}", veterinarian1.getLastName());
+
+        Animal animal2 = animalService.getAnimalById(2);
+        log.info("animal2 found : {}", animal2.getName());
     }
 }

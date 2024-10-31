@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,4 +26,13 @@ public class AnimalServiceImpl implements AnimalService {
         log.info("Fetching all animals");
         return animalRepository.findAll();
     }
+
+    @Override
+    public Animal getAnimalById(Integer id) {
+        log.info("Fetching Animal by id {}", id);
+        Optional<Animal> animal = animalRepository.findById(id);
+        return animal.orElse(null);
+    }
+
+
 }
