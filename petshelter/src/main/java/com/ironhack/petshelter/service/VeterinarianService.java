@@ -1,6 +1,9 @@
 package com.ironhack.petshelter.service;
 
+import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.model.Veterinarian;
+
+import java.util.List;
 
 public interface VeterinarianService {
 
@@ -10,4 +13,11 @@ public interface VeterinarianService {
      * @return the saved veterinarian
      */
     Veterinarian save(Veterinarian veterinarian);
+
+    /**
+     * This method is used to retrieve all Veterinarian entities from the database.
+     *
+     * @return a List of all Veterinarian entities.
+     */
+    List<Veterinarian> getVeterinarians();
 }

@@ -95,6 +95,11 @@ public class DataLoader implements CommandLineRunner {
         veterinarian.setLastName("house");
         veterinarianService.save(veterinarian);
 
+        Veterinarian veterinarian2 = new Veterinarian();
+        veterinarian2.setFirstName("hugo");
+        veterinarian2.setLastName("house");
+        veterinarianService.save(veterinarian2);
+
         Employee employee = new Employee();
         employee.setFirstName("ana");
         employee.setLastName("mendoza");
@@ -116,5 +121,8 @@ public class DataLoader implements CommandLineRunner {
 
         List<Employee> employees = employeeService.getEmployees();
         log.info("employees found : {}", employees.size());
+
+        List<Veterinarian> veterinarians = veterinarianService.getVeterinarians();
+        log.info("veterinarians found : {}", veterinarians.size());
     }
 }

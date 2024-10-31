@@ -1,10 +1,13 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.VeterinarianService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -12,6 +15,17 @@ import org.springframework.web.bind.annotation.*;
 public class VeterinarianController {
 
     private final VeterinarianService veterinarianService;
+
+    /**
+     * Get a list of all veterinarians
+     *
+     * @return list of all veterinarians
+     */
+    @GetMapping("/veterinarians")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Veterinarian> getVeterinarians() {
+        return veterinarianService.getVeterinarians();
+    }
 
     /**
      * Save a new veterinarian
