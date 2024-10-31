@@ -85,6 +85,11 @@ public class DataLoader implements CommandLineRunner {
         adopter.setLastName("bardot");
         adopterService.save(adopter);
 
+        Adopter adopter2 = new Adopter();
+        adopter2.setFirstName("angela");
+        adopter2.setLastName("guzman");
+        adopterService.save(adopter2);
+
         Veterinarian veterinarian = new Veterinarian();
         veterinarian.setFirstName("gregory");
         veterinarian.setLastName("house");
@@ -100,5 +105,8 @@ public class DataLoader implements CommandLineRunner {
 
         Adopter adopter1 = adopterService.getAdopterById(1);
         log.info("adopter1 found : {}", adopter1.getLastName());
+
+        List<Adopter> adopters = adopterService.getAdopters();
+        log.info("adopters found : {}", adopters.size());
     }
 }

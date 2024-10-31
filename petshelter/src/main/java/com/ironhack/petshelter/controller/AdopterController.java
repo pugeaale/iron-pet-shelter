@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -22,6 +24,17 @@ public class AdopterController {
     @ResponseStatus(HttpStatus.OK)
     public Adopter getAdopterById(@PathVariable Integer id) {
         return adopterService.getAdopterById(id);
+    }
+
+    /**
+     * Get a list of all Adopters
+     *
+     * @return list of all Adopters
+     */
+    @GetMapping("/adopters")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Adopter> getShelters() {
+        return adopterService.getAdopters();
     }
 
     /**
