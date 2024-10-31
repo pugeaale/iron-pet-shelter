@@ -34,6 +34,11 @@ Save a new adopter
 * POST
 * /adopters
 
+Get a adopter by id
+* METHOD : GET
+* ROUTE : /adopters/{id}
+* Path variable : 'id' of the adopter
+
 ### Veterinarian
 
 Save a new Veterinarian

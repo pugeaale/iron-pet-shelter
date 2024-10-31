@@ -1,14 +1,10 @@
 package com.ironhack.petshelter.controller;
 
 import com.ironhack.petshelter.model.Adopter;
-import com.ironhack.petshelter.model.Shelter;
 import com.ironhack.petshelter.service.AdopterService;
-import com.ironhack.petshelter.service.ShelterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -16,6 +12,17 @@ import java.util.List;
 public class AdopterController {
 
     private final AdopterService adopterService;
+
+    /**
+     * Get a adopter by id
+     * @param id the id of the adopter to be retrieved
+     * @return the retrieved adopter
+     */
+    @GetMapping("/adopters/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Adopter getAdopterById(@PathVariable Integer id) {
+        return adopterService.getAdopterById(id);
+    }
 
     /**
      * Save a new adopter

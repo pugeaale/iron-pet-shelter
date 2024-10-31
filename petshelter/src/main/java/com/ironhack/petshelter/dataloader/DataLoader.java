@@ -97,5 +97,8 @@ public class DataLoader implements CommandLineRunner {
 
         Employee employee1 = employeeService.getEmployeeById(1);
         log.info("employee1 found : {}", employee1.getLastName());
+
+        Adopter adopter1 = adopterService.getAdopterById(1);
+        log.info("adopter1 found : {}", adopter1.getLastName());
     }
 }
