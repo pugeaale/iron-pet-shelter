@@ -10,4 +10,10 @@ public interface EmployeeService {
      * @return the saved employee
      */
     Employee save(Employee employee);
+    /**
+     * This method is used to retrieve a employee by id from the database.
+     * @param id the id of the employee to be retrieved
+     * @return the retrieved employee
+     */
+    Employee getEmployeeById(Integer id);
 }
