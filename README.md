@@ -49,6 +49,10 @@ Save a new Veterinarian
 * POST
 * /veterinarians
 
+Get a list of all veterinarians
+* GET
+* /veterinarians
+
 ### Employee
 
 Save a new Employee
