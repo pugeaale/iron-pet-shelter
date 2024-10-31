@@ -2,6 +2,8 @@ package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.model.Adopter;
 
+import java.util.List;
+
 public interface AdopterService {
 
     /**
@@ -16,4 +18,10 @@ public interface AdopterService {
      * @return the retrieved adopter
      */
     Adopter getAdopterById(Integer id);
+    /**
+     * This method is used to retrieve all Adopter entities from the database.
+     *
+     * @return a List of all Adopter entities.
+     */
+    List<Adopter> getAdopters();
 }

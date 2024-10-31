@@ -39,6 +39,10 @@ Get a adopter by id
 * ROUTE : /adopters/{id}
 * Path variable : 'id' of the adopter
 
+Get a list of all adopters
+* GET
+* /adopters
+
 ### Veterinarian
 
 Save a new Veterinarian

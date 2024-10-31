@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -22,6 +23,12 @@ public class AdopterServiceImpl implements AdopterService {
     public Adopter save(Adopter adopter) {
         log.info("Saving new adopter {} to the database", adopter.getLastName());
         return adopterRepository.save(adopter);
+    }
+
+    @Override
+    public List<Adopter> getAdopters() {
+        log.info("Fetching all adopters");
+        return adopterRepository.findAll();
     }
 
     @Override
