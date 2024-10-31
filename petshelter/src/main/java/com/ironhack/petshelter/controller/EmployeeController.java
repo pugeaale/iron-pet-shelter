@@ -14,13 +14,24 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     /**
+     * Get a employee by id
+     * @param id the id of the employee to be retrieved
+     * @return the retrieved employee
+     */
+    @GetMapping("/employees/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Employee getEmployeeById(@PathVariable Integer id) {
+        return employeeService.getEmployeeById(id);
+    }
+
+    /**
      * Save a new employee
      *
      * @param employee the employee to be saved
      */
     @PostMapping("/employees")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveAdopter(@RequestBody Employee employee) {
+    public void saveEmployee(@RequestBody Employee employee) {
         employeeService.save(employee);
     }
 }

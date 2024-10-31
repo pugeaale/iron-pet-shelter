@@ -94,5 +94,8 @@ public class DataLoader implements CommandLineRunner {
         employee.setFirstName("ana");
         employee.setLastName("mendoza");
         employeeService.save(employee);
+
+        Employee employee1 = employeeService.getEmployeeById(1);
+        log.info("employee1 found : {}", employee1.getLastName());
     }
 }
