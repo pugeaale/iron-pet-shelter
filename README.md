@@ -107,6 +107,14 @@ Add animal to a shelter
   "shelterId": "2"
   } 
 
+Add employee to a shelter
+* PATH
+* /shelters/add-employee
+* body : {
+  "employeeId": "2",
+  "shelterId": "2"
+  }
+
 Get a list of all shelters
 * GET
 * /shelters

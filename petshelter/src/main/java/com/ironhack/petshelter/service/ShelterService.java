@@ -32,4 +32,11 @@ public interface ShelterService {
      * @param shelterId the id of the shelter to add the animal
      */
     void addAnimalToShelter(Integer animalId, Integer shelterId);
+
+    /**
+     * This method is used to add an employee by id to a shelter by id
+     * @param employeeId the id of the employee to add to the shelter
+     * @param shelterId the id of the shelter to add the employee
+     */
+    void addEmployeeToShelter(Integer employeeId, Integer shelterId);
 }

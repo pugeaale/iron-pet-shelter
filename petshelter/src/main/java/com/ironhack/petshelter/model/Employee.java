@@ -1,9 +1,6 @@
 package com.ironhack.petshelter.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +16,9 @@ public class Employee {
     private String firstName;
 
     private String lastName;
+
+    @ManyToOne
+    @JoinColumn(name = "shelterId")
+    private Shelter shelter;
+
 }
