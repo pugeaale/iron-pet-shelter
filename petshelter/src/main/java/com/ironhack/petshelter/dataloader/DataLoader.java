@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
 
+    private final AdoptionService adoptionService;
     private final UserService userService;
     private final RoleService roleService;
     private final ShelterService shelterService;
@@ -138,5 +139,8 @@ public class DataLoader implements CommandLineRunner {
 
         List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
         log.info("medicalProcedures found : {}", medicalProcedures.size());
+
+        List<Adoption> adoptions = adoptionService.getAdoptions();
+        log.info("adoptions found : {}", adoptions.size());
     }
 }

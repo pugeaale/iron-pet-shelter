@@ -43,6 +43,12 @@ Get a list of all adopters
 * GET
 * /adopters
 
+### Adoption
+
+Get a list of all Adoptions
+* GET
+* /adoptions
+
 ### Veterinarian
 
 Save a new Veterinarian
