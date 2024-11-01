@@ -58,6 +58,12 @@ Get a Veterinarian by id
 * ROUTE : /veterinarians/{id}
 * Path variable : 'id' of the Veterinarian
 
+### Medical procedure
+
+Get a list of all medical procedures
+* GET
+* /medical-procedures
+
 ### Employee
 
 Save a new Employee

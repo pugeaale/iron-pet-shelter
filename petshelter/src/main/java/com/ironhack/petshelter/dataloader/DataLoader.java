@@ -24,6 +24,7 @@ public class DataLoader implements CommandLineRunner {
     private final AdopterService adopterService;
     private final VeterinarianService veterinarianService;
     private final EmployeeService employeeService;
+    private final MedicalProcedureService medicalProcedureService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -134,5 +135,8 @@ public class DataLoader implements CommandLineRunner {
         shelterService.addAnimalToShelter(1,1);
 
         shelterService.addEmployeeToShelter(1,1);
+
+        List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
+        log.info("medicalProcedures found : {}", medicalProcedures.size());
     }
 }
