@@ -18,4 +18,11 @@ public interface AnimalService {
      * @return the retrieved Animal
      */
     Animal getAnimalById(Integer id);
+
+    /**
+     * This method is used to save an animal entity to the database.
+     * @param animal the animal to be saved
+     * @return the saved animal
+     */
+    Animal saveAnimal(Animal animal);
 }

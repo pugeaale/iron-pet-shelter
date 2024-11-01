@@ -99,6 +99,14 @@ Save a new shelter
 * POST
 * /shelters
 
+Add animal to a shelter
+* PATH
+* /shelters/add-animal
+* body : {
+  "animalId": "2",
+  "shelterId": "2"
+  } 
+
 Get a list of all shelters
 * GET
 * /shelters

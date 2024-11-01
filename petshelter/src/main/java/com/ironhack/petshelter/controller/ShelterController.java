@@ -1,5 +1,7 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.dto.AnimalToShelterDTO;
+import com.ironhack.petshelter.dto.RoleToUserDTO;
 import com.ironhack.petshelter.model.Shelter;
 import com.ironhack.petshelter.service.ShelterService;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +48,16 @@ public class ShelterController {
     @ResponseStatus(HttpStatus.CREATED)
     public void saveShelter(@RequestBody Shelter shelter) {
         shelterService.save(shelter);
+    }
+
+    /**
+     * Add an animal to shelter
+     *
+     * @param animalToShelterDTO DTO containing the animal id and shelter id
+     */
+    @PatchMapping("/shelters/add-animal")
+    @ResponseStatus(HttpStatus.OK)
+    public void addAnimalToShelter(@RequestBody AnimalToShelterDTO animalToShelterDTO) {
+        shelterService.addAnimalToShelter(animalToShelterDTO.getAnimalId(), animalToShelterDTO.getShelterId());
     }
 }

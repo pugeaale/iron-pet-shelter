@@ -130,5 +130,7 @@ public class DataLoader implements CommandLineRunner {
 
         Animal animal2 = animalService.getAnimalById(2);
         log.info("animal2 found : {}", animal2.getName());
+
+        shelterService.addAnimalToShelter(1,1);
     }
 }
