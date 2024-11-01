@@ -27,6 +27,11 @@ public class AnimalServiceImpl implements AnimalService {
         return animalRepository.findAll();
     }
 
+    public Animal saveAnimal(Animal animal) {
+        log.info("Saving animal {}", animal.getId());
+        return animalRepository.save(animal);
+    }
+
     @Override
     public Animal getAnimalById(Integer id) {
         log.info("Fetching Animal by id {}", id);

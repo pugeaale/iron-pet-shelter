@@ -1,7 +1,10 @@
 package com.ironhack.petshelter.service.impl;
 
+import com.ironhack.petshelter.model.Animal;
 import com.ironhack.petshelter.model.Shelter;
+import com.ironhack.petshelter.repository.AnimalRepository;
 import com.ironhack.petshelter.repository.ShelterRepository;
+import com.ironhack.petshelter.service.AnimalService;
 import com.ironhack.petshelter.service.ShelterService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +20,7 @@ import java.util.Optional;
 public class ShelterServiceImpl implements ShelterService {
 
     private final ShelterRepository shelterRepository;
+    private final AnimalService animalService;
 
     @Transactional
     @Override
@@ -36,5 +40,20 @@ public class ShelterServiceImpl implements ShelterService {
         log.info("Fetching shelter by id {}", id);
         Optional<Shelter> shelter = shelterRepository.findById(id);
         return shelter.orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void addAnimalToShelter(Integer animalId, Integer shelterId) {
+        Animal animal = animalService.getAnimalById(animalId);
+        if( animal == null )
+            throw new IllegalArgumentException("Animal not found");
+        Shelter shelter = getShelterById(shelterId);
+        if( shelter == null )
+            throw new IllegalArgumentException("Shelter not found");
+        animal.setShelter(shelter);
+        animalService.saveAnimal(animal);
+        shelter.getAnimals().add(animal);
+        save(shelter);
     }
 }
