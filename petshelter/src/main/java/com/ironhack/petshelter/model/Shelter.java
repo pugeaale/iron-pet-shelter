@@ -22,4 +22,8 @@ public class Shelter {
     @OneToMany(mappedBy = "shelter")
     @JsonIgnore
     private List<Animal> animals = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shelter")
+    @JsonIgnore
+    private List<Employee> employees = new ArrayList<>();
 }

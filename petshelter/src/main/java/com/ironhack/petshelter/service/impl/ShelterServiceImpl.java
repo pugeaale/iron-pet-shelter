@@ -1,10 +1,11 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.model.Animal;
+import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.model.Shelter;
-import com.ironhack.petshelter.repository.AnimalRepository;
 import com.ironhack.petshelter.repository.ShelterRepository;
 import com.ironhack.petshelter.service.AnimalService;
+import com.ironhack.petshelter.service.EmployeeService;
 import com.ironhack.petshelter.service.ShelterService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class ShelterServiceImpl implements ShelterService {
 
     private final ShelterRepository shelterRepository;
     private final AnimalService animalService;
+    private final EmployeeService employeeService;
 
     @Transactional
     @Override
@@ -54,6 +56,21 @@ public class ShelterServiceImpl implements ShelterService {
         animal.setShelter(shelter);
         animalService.saveAnimal(animal);
         shelter.getAnimals().add(animal);
+        save(shelter);
+    }
+
+    @Override
+    @Transactional
+    public void addEmployeeToShelter(Integer employeeId, Integer shelterId) {
+        Employee employee = employeeService.getEmployeeById(employeeId);
+        if( employee == null )
+            throw new IllegalArgumentException("Employee not found");
+        Shelter shelter = getShelterById(shelterId);
+        if( shelter == null )
+            throw new IllegalArgumentException("Shelter not found");
+        employee.setShelter(shelter);
+        employeeService.save(employee);
+        shelter.getEmployees().add(employee);
         save(shelter);
     }
 }
