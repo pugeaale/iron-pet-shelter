@@ -19,6 +19,9 @@ public class Animal {
     @JoinColumn(name = "shelterId")
     private Shelter shelter;
 
+    @OneToOne(mappedBy = "animal")
+    private Adoption adoption;
+
     Animal(String name) {
         this.name = name;
     }

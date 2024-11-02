@@ -49,6 +49,14 @@ Get a list of all Adoptions
 * GET
 * /adoptions
 
+Save a new adoption
+* POST
+* /adoptions
+* Request body : {
+  "animalId": "2",
+  "adopterId": "2"
+  }
+
 ### Veterinarian
 
 Save a new Veterinarian
