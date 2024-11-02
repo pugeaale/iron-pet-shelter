@@ -78,6 +78,14 @@ Get a list of all medical procedures
 * GET
 * /medical-procedures
 
+Save a new medical procedure
+* POST
+* /medical-procedures
+* Request body : {
+  "animalId": "2",
+  "veterinarianId": "2"
+  }
+
 ### Employee
 
 Save a new Employee
