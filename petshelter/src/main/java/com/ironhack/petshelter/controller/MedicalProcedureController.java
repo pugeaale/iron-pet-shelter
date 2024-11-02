@@ -26,4 +26,16 @@ public class MedicalProcedureController {
         return medicalProcedureService.getMedicalProcedures();
     }
 
+    /**
+     * Save a new medical procedure
+     *
+     * @param animalId the animal id
+     * @param veterinarianId the veterinarian id
+     */
+    @PostMapping("/medical-procedures")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createMedicalProcedure(@RequestBody Integer animalId, Integer veterinarianId) {
+        medicalProcedureService.create(animalId, veterinarianId);
+    }
+
 }

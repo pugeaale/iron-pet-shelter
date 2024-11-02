@@ -1,9 +1,6 @@
 package com.ironhack.petshelter.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,4 +15,11 @@ public class MedicalProcedure {
 
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "animalId")
+    private Animal animal;
+
+    @ManyToOne
+    @JoinColumn(name = "veterinarianId")
+    private Veterinarian veterinarian;
 }

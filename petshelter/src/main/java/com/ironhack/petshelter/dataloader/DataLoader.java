@@ -137,12 +137,13 @@ public class DataLoader implements CommandLineRunner {
 
         shelterService.addEmployeeToShelter(1,1);
 
-        List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
-        log.info("medicalProcedures found : {}", medicalProcedures.size());
-
         adoptionService.create(animal2.getId(),adopter1.getId());
 
         List<Adoption> adoptions = adoptionService.getAdoptions();
         log.info("adoptions found : {}", adoptions.size());
+
+        medicalProcedureService.create(animal2.getId(), veterinarian1.getId());
+        List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
+        log.info("medicalProcedures found : {}", medicalProcedures.size());
     }
 }
