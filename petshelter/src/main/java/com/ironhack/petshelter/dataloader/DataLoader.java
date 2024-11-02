@@ -140,6 +140,8 @@ public class DataLoader implements CommandLineRunner {
         List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
         log.info("medicalProcedures found : {}", medicalProcedures.size());
 
+        adoptionService.create(animal2.getId(),adopter1.getId());
+
         List<Adoption> adoptions = adoptionService.getAdoptions();
         log.info("adoptions found : {}", adoptions.size());
     }
