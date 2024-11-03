@@ -157,6 +157,12 @@ Get a shelter by id
 * ROUTE : /shelters/{id}
 * Path variable : 'id' of the shelter 
 
+Get shelters by city
+* METHOD : GET
+* ROUTE : /shelters-by-city
+* Request param : 'city' to locate shelters
+* ex: /shelters-by-city?city=paris
+
 ### Dog
 
 Save a new dog

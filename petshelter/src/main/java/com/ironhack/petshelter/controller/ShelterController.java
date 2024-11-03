@@ -3,6 +3,7 @@ package com.ironhack.petshelter.controller;
 import com.ironhack.petshelter.dto.AnimalToShelterDTO;
 import com.ironhack.petshelter.dto.EmployeeToShelterDTO;
 import com.ironhack.petshelter.model.Shelter;
+import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.ShelterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,17 @@ public class ShelterController {
     @ResponseStatus(HttpStatus.OK)
     public List<Shelter> getShelters() {
         return shelterService.getShelters();
+    }
+
+    /**
+     * Get shelters by city
+     * @param city the city of shelters to be retrieved
+     * @return the filtered list of shelters
+     */
+    @GetMapping("/shelters-by-city")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Shelter> getSheltersByCity(@RequestParam String city) {
+        return shelterService.getSheltersByCity(city);
     }
 
     /**

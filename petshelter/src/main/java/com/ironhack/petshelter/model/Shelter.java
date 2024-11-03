@@ -19,6 +19,8 @@ public class Shelter {
 
     private String name;
 
+    private String city;
+
     @OneToMany(mappedBy = "shelter")
     @JsonIgnore
     private List<Animal> animals = new ArrayList<>();

@@ -45,10 +45,12 @@ public class DataLoader implements CommandLineRunner {
 
         Shelter shelter = new Shelter();
         shelter.setName("Shelter1");
+        shelter.setCity("paris");
         shelterService.save(shelter);
 
         Shelter shelter2 = new Shelter();
         shelter2.setName("shelter2");
+        shelter2.setCity("lyon");
         shelterService.save(shelter2);
 
         Dog dog = new Dog();
@@ -150,6 +152,9 @@ public class DataLoader implements CommandLineRunner {
 
         List<Veterinarian> veterinariansByCity = veterinarianService.getVeterinariansByCity("paris");
         log.info("veterinarians found : {}", veterinariansByCity.size());
+
+        List<Shelter> sheltersByCity = shelterService.getSheltersByCity("paris");
+        log.info("shelters found : {}", sheltersByCity.size());
 
     }
 }
