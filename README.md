@@ -72,6 +72,11 @@ Get a Veterinarian by id
 * ROUTE : /veterinarians/{id}
 * Path variable : 'id' of the Veterinarian
 
+Get Veterinarians by city
+* METHOD : GET
+* ROUTE : /veterinarians/{city}
+* Path variable : 'city' to locate veterinarians
+
 ### Medical procedure
 
 Get a list of all medical procedures

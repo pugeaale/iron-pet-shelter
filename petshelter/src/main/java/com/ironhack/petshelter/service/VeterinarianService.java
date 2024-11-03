@@ -13,12 +13,21 @@ public interface VeterinarianService {
      */
     Veterinarian save(Veterinarian veterinarian);
 
+
     /**
      * This method is used to retrieve all Veterinarian entities from the database.
      *
      * @return a List of all Veterinarian entities.
      */
     List<Veterinarian> getVeterinarians();
+
+    /**
+     * This method is used to retrieve all Veterinarian entities by city
+     * @param city the city to search veterinarians
+     * @return a List of Veterinarian entities filtered by city.
+     */
+    List<Veterinarian> getVeterinariansByCity(String city);
+
     /**
      * This method is used to retrieve a Veterinarian by id from the database.
      * @param id the id of the Veterinarian to be retrieved

@@ -39,6 +39,17 @@ public class VeterinarianController {
     }
 
     /**
+     * Get Veterinarians by city
+     * @param city the city of Veterinarians to be retrieved
+     * @return the filtered list of Veterinarian
+     */
+    @GetMapping("/veterinarians/{city}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Veterinarian> getVeterinarianByCity(@PathVariable String city) {
+        return veterinarianService.getVeterinariansByCity(city);
+    }
+
+    /**
      * Save a new veterinarian
      *
      * @param veterinarian the veterinarian to be saved
