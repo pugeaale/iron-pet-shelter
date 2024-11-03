@@ -194,6 +194,12 @@ Get an Animal by id
 * ROUTE : /animals/{id}
 * Path variable : 'id' of the Animal
 
+Get animals by shelter
+* METHOD : GET
+* ROUTE : /animals-by-shelter
+* Request param : 'shelterId' to locate animals
+* ex: /animals-by-shelter?shelterId=1
+
 ## Future work
 
 ## Extra links

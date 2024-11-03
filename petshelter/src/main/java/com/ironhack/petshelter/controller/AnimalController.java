@@ -28,6 +28,17 @@ public class AnimalController {
     }
 
     /**
+     * Get animals by shelter
+     * @param shelterId the id of the shelter
+     * @return the filtered list of animals
+     */
+    @GetMapping("/animals-by-shelter")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Animal> getAnimalsByShelter(@RequestParam Integer shelterId) {
+        return animalService.getAnimalsByShelterId(shelterId);
+    }
+
+    /**
      * Get a list of all animals
      *
      * @return list of all animals

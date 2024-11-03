@@ -156,5 +156,8 @@ public class DataLoader implements CommandLineRunner {
         List<Shelter> sheltersByCity = shelterService.getSheltersByCity("paris");
         log.info("shelters found : {}", sheltersByCity.size());
 
+        List<Animal> animalsByShelter = animalService.getAnimalsByShelterId(1);
+        log.info("animals found : {}", animalsByShelter.size());
+
     }
 }
