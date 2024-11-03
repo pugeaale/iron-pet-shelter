@@ -18,6 +18,12 @@ public interface ShelterService {
      * @return a List of all shelter entities.
      */
     List<Shelter> getShelters();
+    /**
+     * This method is used to retrieve all shelter entities by city
+     * @param city the city to search shelters
+     * @return a List of shelter entities filtered by city.
+     */
+    List<Shelter> getSheltersByCity(String city);
 
     /**
      * This method is used to retrieve a shelter by id from the database.

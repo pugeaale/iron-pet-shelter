@@ -38,6 +38,12 @@ public class ShelterServiceImpl implements ShelterService {
     }
 
     @Override
+    public List<Shelter> getSheltersByCity(String city) {
+        log.info("Fetching shelters by city {}", city);
+        return shelterRepository.getShelterByCity(city);
+    }
+
+    @Override
     public Shelter getShelterById(Integer id) {
         log.info("Fetching shelter by id {}", id);
         Optional<Shelter> shelter = shelterRepository.findById(id);
