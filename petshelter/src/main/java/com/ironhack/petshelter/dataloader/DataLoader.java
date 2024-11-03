@@ -94,12 +94,14 @@ public class DataLoader implements CommandLineRunner {
 
         Veterinarian veterinarian = new Veterinarian();
         veterinarian.setFirstName("gregory");
+        veterinarian.setCity("paris");
         veterinarian.setLastName("house");
         veterinarianService.save(veterinarian);
 
         Veterinarian veterinarian2 = new Veterinarian();
         veterinarian2.setFirstName("hugo");
         veterinarian2.setLastName("house");
+        veterinarian2.setCity("lyon");
         veterinarianService.save(veterinarian2);
 
         Employee employee = new Employee();
@@ -145,5 +147,9 @@ public class DataLoader implements CommandLineRunner {
         medicalProcedureService.create(animal2.getId(), veterinarian1.getId());
         List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
         log.info("medicalProcedures found : {}", medicalProcedures.size());
+
+        List<Veterinarian> veterinariansByCity = veterinarianService.getVeterinariansByCity("paris");
+        log.info("veterinarians found : {}", veterinariansByCity.size());
+
     }
 }

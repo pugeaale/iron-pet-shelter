@@ -32,6 +32,12 @@ public class VeterinarianServiceImpl implements VeterinarianService {
     }
 
     @Override
+    public List<Veterinarian> getVeterinariansByCity(String city) {
+        log.info("Fetching Veterinarian by city {}", city);
+        return veterinarianRepository.getVeterinarianByCity(city);
+    }
+
+    @Override
     public Veterinarian getVeterinarianById(Integer id) {
         log.info("Fetching Veterinarian by id {}", id);
         Optional<Veterinarian> veterinarian = veterinarianRepository.findById(id);

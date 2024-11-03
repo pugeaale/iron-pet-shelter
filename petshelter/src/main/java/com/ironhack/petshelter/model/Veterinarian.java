@@ -21,6 +21,8 @@ public class Veterinarian {
 
     private String lastName;
 
+    private String city;
+
     @OneToMany(mappedBy = "veterinarian")
     @JsonIgnore
     private List<MedicalProcedure> medicalProcedures = new ArrayList<>();
