@@ -96,7 +96,13 @@ Get medical procedures by animals
 * ROUTE : /medical-procedures-by-animal
 * Request param : 'animalId' to locate medical procedures
 * ex: /medical-procedures-by-animal?animalId=1
-* 
+
+Get medical procedures by veterinarian
+* METHOD : GET
+* ROUTE : /medical-procedures-by-veterinarian
+* Request param : 'veterinarianId' to locate medical procedures
+* ex: /medical-procedures-by-veterinarian?veterinarianId=1
+
 ### Employee
 
 Save a new Employee

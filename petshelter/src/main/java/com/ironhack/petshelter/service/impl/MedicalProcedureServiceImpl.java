@@ -33,6 +33,12 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
         return medicalProcedureRepository.findMedicalProcedureByAnimal_Id(animalId);
     }
 
+    @Override
+    public List<MedicalProcedure> getMedicalProceduresByVeterinarian(Integer veterinarianId) {
+        log.info("Fetching all medical procedures by veterinarian id: {}", veterinarianId);
+        return medicalProcedureRepository.findMedicalProcedureByVeterinarianId(veterinarianId);
+    }
+
     @Transactional
     @Override
     public MedicalProcedure create(Integer animalId, Integer veterinarianId) {
