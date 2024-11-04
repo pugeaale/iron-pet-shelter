@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.service.impl;
 
+import com.ironhack.petshelter.dto.ShelterDTO;
 import com.ironhack.petshelter.model.Animal;
 import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.model.Shelter;
@@ -23,6 +24,18 @@ public class ShelterServiceImpl implements ShelterService {
     private final ShelterRepository shelterRepository;
     private final AnimalService animalService;
     private final EmployeeService employeeService;
+
+    @Transactional
+    @Override
+    public Shelter update(Integer idInteger, ShelterDTO shelterDTO) {
+        log.info("Update Shelter id:{}", idInteger);
+        Shelter shelter = getShelterById(idInteger);
+        if(shelter == null) return null;
+        shelter.setCity(shelterDTO.getCity());
+        shelter.setPhoneNumber(shelterDTO.getPhoneNumber());
+        shelter.setName(shelterDTO.getName());
+        return shelterRepository.save(shelter);
+    }
 
     @Transactional
     @Override

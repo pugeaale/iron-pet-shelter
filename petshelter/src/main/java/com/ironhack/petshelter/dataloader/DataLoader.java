@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.dataloader;
 
 import com.ironhack.petshelter.dto.EmployeeDTO;
+import com.ironhack.petshelter.dto.ShelterDTO;
 import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.*;
 import com.ironhack.petshelter.repository.ShelterRepository;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 @Slf4j
@@ -181,5 +183,14 @@ public class DataLoader implements CommandLineRunner {
         employeeService.update(1, employeeDTO);
         Employee employee1Updated = employeeService.getEmployeeById(1);
         log.info("employee1Updated : {}", employee1Updated.getEmail());
+
+        ShelterDTO shelterDTO = new ShelterDTO();
+        shelterDTO.setCity("lisboa");
+        shelterDTO.setPhoneNumber("9876543210");
+        shelterDTO.setName("best shelter ever");
+        shelterService.update(1, shelterDTO);
+        Shelter shelter1Updated = shelterService.getShelterById(1);
+        log.info(MessageFormat.format("shelter1Updated : '{}'{0} - {1} -{2}", shelter1Updated.getCity(), shelter1Updated.getPhoneNumber(), shelter1Updated.getName()));
+
     }
 }
