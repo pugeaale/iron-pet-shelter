@@ -1,10 +1,18 @@
 package com.ironhack.petshelter.service;
 
+import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Veterinarian;
 
 import java.util.List;
 
 public interface VeterinarianService {
+
+    /**
+     * This method is used to update a veterinarian entity to the database.
+     * @param veterinarianDTO the veterinarian datas to update
+     * @return the updated veterinarian
+     */
+    Veterinarian update(Integer id, VeterinarianDTO veterinarianDTO);
 
     /**
      * This method is used to save a veterinarian entity to the database.

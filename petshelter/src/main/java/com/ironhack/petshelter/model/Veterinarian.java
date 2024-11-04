@@ -23,6 +23,8 @@ public class Veterinarian {
 
     private String city;
 
+    private String phoneNumber;
+
     @OneToMany(mappedBy = "veterinarian")
     @JsonIgnore
     private List<MedicalProcedure> medicalProcedures = new ArrayList<>();

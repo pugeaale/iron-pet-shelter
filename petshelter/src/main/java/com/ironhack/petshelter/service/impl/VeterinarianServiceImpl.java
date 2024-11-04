@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.service.impl;
 
+import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.repository.VeterinarianRepository;
 import com.ironhack.petshelter.service.VeterinarianService;
@@ -17,6 +18,17 @@ import java.util.Optional;
 public class VeterinarianServiceImpl implements VeterinarianService {
 
     private final VeterinarianRepository veterinarianRepository;
+
+    @Transactional
+    @Override
+    public Veterinarian update(Integer idInteger, VeterinarianDTO veterinarianDTO) {
+        log.info("VeterinarianServiceImpl.update");
+        Veterinarian veterinarian = getVeterinarianById(idInteger);
+        if(veterinarian == null) return null;
+        veterinarian.setCity(veterinarianDTO.getCity());
+        veterinarian.setPhoneNumber(veterinarianDTO.getPhoneNumber());
+        return veterinarianRepository.save(veterinarian);
+    }
 
     @Transactional
     @Override
