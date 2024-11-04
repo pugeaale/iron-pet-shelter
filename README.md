@@ -63,6 +63,14 @@ Save a new Veterinarian
 * POST
 * /veterinarians
 
+Update a Veterinarian
+* PATH
+* /veterinarians/{id}
+* Request body : {
+    "city": "barcelona",
+    "phoneNumber": "0123456789"
+    }
+
 Get a list of all veterinarians
 * GET
 * /veterinarians
