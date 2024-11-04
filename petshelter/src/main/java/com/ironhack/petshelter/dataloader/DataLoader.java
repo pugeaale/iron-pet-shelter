@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.dataloader;
 
+import com.ironhack.petshelter.dto.AdopterDTO;
 import com.ironhack.petshelter.dto.EmployeeDTO;
 import com.ironhack.petshelter.dto.ShelterDTO;
 import com.ironhack.petshelter.dto.VeterinarianDTO;
@@ -192,5 +193,10 @@ public class DataLoader implements CommandLineRunner {
         Shelter shelter1Updated = shelterService.getShelterById(1);
         log.info(MessageFormat.format("shelter1Updated : '{}'{0} - {1} -{2}", shelter1Updated.getCity(), shelter1Updated.getPhoneNumber(), shelter1Updated.getName()));
 
+        AdopterDTO adopterDTO = new AdopterDTO();
+        adopterDTO.setEmail("email@outlook.org");
+        adopterDTO.setPhoneNumber("+33777888999");
+        Adopter adopter1Updated = adopterService.update(1, adopterDTO);
+        log.info("adopter1Updated : {}", adopter1Updated.getEmail() + "-" + adopter1Updated.getPhoneNumber());
     }
 }
