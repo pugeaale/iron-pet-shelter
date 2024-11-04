@@ -1,13 +1,18 @@
 package com.ironhack.petshelter.service;
 
-import com.ironhack.petshelter.model.Adoption;
 import com.ironhack.petshelter.model.MedicalProcedure;
-import com.ironhack.petshelter.model.Veterinarian;
 
 import java.util.List;
 
 public interface MedicalProcedureService {
 
+
+    /**
+     * This method is used to retrieve all medical procedures entities for an animal
+     *
+     * @return a List of all medical procedures entities for an anima.
+     */
+    List<MedicalProcedure> getMedicalProceduresByAnimal(Integer animalId);
 
     /**
      * This method is used to retrieve all medical procedures entities from the database.

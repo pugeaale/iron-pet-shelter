@@ -16,6 +16,17 @@ public class MedicalProcedureController {
     private final MedicalProcedureService medicalProcedureService;
 
     /**
+     * Get medical procedures by animal
+     * @param animalId the id of the animal
+     * @return the filtered list of medical procedures
+     */
+    @GetMapping("/medical-procedures-by-animal")
+    @ResponseStatus(HttpStatus.OK)
+    public List<MedicalProcedure> getMedicalProceduresByAnimal(@RequestParam Integer animalId) {
+        return medicalProcedureService.getMedicalProceduresByAnimal(animalId);
+    }
+
+    /**
      * Get a list of all medical procedures
      *
      * @return list of all medical procedures

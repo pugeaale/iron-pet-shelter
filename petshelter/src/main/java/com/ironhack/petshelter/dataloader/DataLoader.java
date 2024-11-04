@@ -147,6 +147,8 @@ public class DataLoader implements CommandLineRunner {
         log.info("adoptions found : {}", adoptions.size());
 
         medicalProcedureService.create(animal2.getId(), veterinarian1.getId());
+        medicalProcedureService.create(1, 1);
+        medicalProcedureService.create(2, 2);
         List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
         log.info("medicalProcedures found : {}", medicalProcedures.size());
 
@@ -159,5 +161,7 @@ public class DataLoader implements CommandLineRunner {
         List<Animal> animalsByShelter = animalService.getAnimalsByShelterId(1);
         log.info("animals found : {}", animalsByShelter.size());
 
+        List<MedicalProcedure> proceduresByAnimal = medicalProcedureService.getMedicalProceduresByAnimal(2);
+        log.info("proceduresByAnimal found : {}", proceduresByAnimal.size());
     }
 }

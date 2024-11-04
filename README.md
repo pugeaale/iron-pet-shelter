@@ -91,6 +91,12 @@ Save a new medical procedure
   "veterinarianId": "2"
   }
 
+Get medical procedures by animals
+* METHOD : GET
+* ROUTE : /medical-procedures-by-animal
+* Request param : 'animalId' to locate medical procedures
+* ex: /medical-procedures-by-animal?animalId=1
+* 
 ### Employee
 
 Save a new Employee
