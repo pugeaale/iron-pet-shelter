@@ -27,6 +27,12 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
         return medicalProcedureRepository.findAll();
     }
 
+    @Override
+    public List<MedicalProcedure> getMedicalProceduresByAnimal(Integer animalId) {
+        log.info("Fetching all medical procedures by animal id: {}", animalId);
+        return medicalProcedureRepository.findMedicalProcedureByAnimal_Id(animalId);
+    }
+
     @Transactional
     @Override
     public MedicalProcedure create(Integer animalId, Integer veterinarianId) {
