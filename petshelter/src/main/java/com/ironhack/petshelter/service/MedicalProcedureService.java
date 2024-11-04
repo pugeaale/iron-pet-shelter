@@ -8,6 +8,13 @@ public interface MedicalProcedureService {
 
 
     /**
+     * This method is used to retrieve all medical procedures entities for a veterinarian
+     *
+     * @return a List of all medical procedures entities for a veterinarian
+     */
+    List<MedicalProcedure> getMedicalProceduresByVeterinarian(Integer veterinarianId);
+
+    /**
      * This method is used to retrieve all medical procedures entities for an animal
      *
      * @return a List of all medical procedures entities for an anima.

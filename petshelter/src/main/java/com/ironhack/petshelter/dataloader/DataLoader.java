@@ -163,5 +163,8 @@ public class DataLoader implements CommandLineRunner {
 
         List<MedicalProcedure> proceduresByAnimal = medicalProcedureService.getMedicalProceduresByAnimal(2);
         log.info("proceduresByAnimal found : {}", proceduresByAnimal.size());
+
+        List<MedicalProcedure> proceduresByVet = medicalProcedureService.getMedicalProceduresByVeterinarian(1);
+        log.info("proceduresByVet found : {}", proceduresByVet.size());
     }
 }

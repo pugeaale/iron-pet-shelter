@@ -27,6 +27,17 @@ public class MedicalProcedureController {
     }
 
     /**
+     * Get medical procedures by veterinarian
+     * @param veterinarianId the id of the veterinarian
+     * @return the filtered list of medical procedures
+     */
+    @GetMapping("/medical-procedures-by-veterinarian")
+    @ResponseStatus(HttpStatus.OK)
+    public List<MedicalProcedure> getMedicalProceduresByVeterinarian(@RequestParam Integer veterinarianId) {
+        return medicalProcedureService.getMedicalProceduresByVeterinarian(veterinarianId);
+    }
+
+    /**
      * Get a list of all medical procedures
      *
      * @return list of all medical procedures
