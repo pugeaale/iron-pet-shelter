@@ -1,10 +1,21 @@
 package com.ironhack.petshelter.service;
 
+import com.ironhack.petshelter.dto.AdopterDTO;
+import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Adopter;
+import com.ironhack.petshelter.model.Veterinarian;
 
 import java.util.List;
 
 public interface AdopterService {
+
+
+    /**
+     * This method is used to update a Adopter entity to the database.
+     * @param adopterDTO the Adopter datas to update
+     * @return the updated Adopter
+     */
+    Adopter update(Integer id, AdopterDTO adopterDTO);
 
     /**
      * This method is used to save a adopter entity to the database.

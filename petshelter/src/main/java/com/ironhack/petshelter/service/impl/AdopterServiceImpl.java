@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.service.impl;
 
+import com.ironhack.petshelter.dto.AdopterDTO;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.repository.AdopterRepository;
 import com.ironhack.petshelter.service.AdopterService;
@@ -17,6 +18,17 @@ import java.util.Optional;
 public class AdopterServiceImpl implements AdopterService {
 
     private final AdopterRepository adopterRepository;
+
+    @Transactional
+    @Override
+    public Adopter update(Integer idInteger, AdopterDTO adopterDTO) {
+        log.info("update adopter id:{}", idInteger);
+        Adopter adopter = getAdopterById(idInteger);
+        if(adopter == null) return null;
+        adopter.setEmail(adopterDTO.getEmail());
+        adopter.setPhoneNumber(adopterDTO.getPhoneNumber());
+        return adopterRepository.save(adopter);
+    }
 
     @Transactional
     @Override

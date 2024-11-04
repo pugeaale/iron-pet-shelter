@@ -21,6 +21,10 @@ public class Adopter {
 
     private String lastName;
 
+    private String email;
+
+    private String phoneNumber;
+
     @OneToMany(mappedBy = "adopter")
     @JsonIgnore
     private List<Adoption> adoptions = new ArrayList<>();

@@ -43,6 +43,14 @@ Get a list of all adopters
 * GET
 * /adopters
 
+Update an adopter
+* PATH
+* /adopters/{id}
+* Request body : {
+  "email": "mail@gmail.edu",
+  "phoneNumber": "+34123456789"
+  }
+
 ### Adoption
 
 Get a list of all Adoptions

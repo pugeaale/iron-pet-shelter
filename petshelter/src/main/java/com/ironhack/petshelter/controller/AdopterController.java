@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.dto.AdopterDTO;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.service.AdopterService;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,11 @@ public class AdopterController {
     @ResponseStatus(HttpStatus.OK)
     public List<Adopter> getShelters() {
         return adopterService.getAdopters();
+    }
+
+    @PatchMapping("/adopters/{id}")
+    public Adopter update(@PathVariable Integer id, @RequestBody AdopterDTO adopterDTO) {
+        return adopterService.update(id, adopterDTO);
     }
 
     /**
