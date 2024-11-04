@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.VeterinarianService;
@@ -47,6 +48,11 @@ public class VeterinarianController {
     @ResponseStatus(HttpStatus.OK)
     public List<Veterinarian> getVeterinarianByCity(@PathVariable String city) {
         return veterinarianService.getVeterinariansByCity(city);
+    }
+
+    @PatchMapping("/{id}")
+    public Veterinarian update(@PathVariable Integer id, @RequestBody VeterinarianDTO updatedVeterinarianDTO) {
+        return veterinarianService.update(id, updatedVeterinarianDTO);
     }
 
     /**
