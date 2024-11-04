@@ -1,6 +1,9 @@
 package com.ironhack.petshelter.service.impl;
 
+import com.ironhack.petshelter.dto.EmployeeDTO;
+import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Employee;
+import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.repository.EmployeeRepository;
 import com.ironhack.petshelter.service.EmployeeService;
 import jakarta.transaction.Transactional;
@@ -17,6 +20,16 @@ import java.util.Optional;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+
+    @Transactional
+    @Override
+    public Employee update(Integer idInteger, EmployeeDTO employeeDTO) {
+        log.info("employee update id:{}", idInteger);
+        Employee employee = getEmployeeById(idInteger);
+        if(employee == null) return null;
+        employee.setEmail(employeeDTO.getEmail());
+        return employeeRepository.save(employee);
+    }
 
     @Transactional
     @Override

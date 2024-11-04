@@ -1,7 +1,10 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.dto.EmployeeDTO;
+import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.model.Employee;
+import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,6 +39,11 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.OK)
     public Employee getEmployeeById(@PathVariable Integer id) {
         return employeeService.getEmployeeById(id);
+    }
+
+    @PatchMapping("/employees/{id}")
+    public Employee update(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.update(id, employeeDTO);
     }
 
     /**

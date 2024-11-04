@@ -117,6 +117,13 @@ Save a new Employee
 * POST
 * /employees
 
+Update an employee
+* PATH
+* /employees/{id}
+* Request body : {
+  "email": "myemail@new.com"
+  }
+
 Get a list of all Employees
 * GET
 * /employees

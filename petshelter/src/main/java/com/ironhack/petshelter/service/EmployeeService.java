@@ -1,10 +1,18 @@
 package com.ironhack.petshelter.service;
 
+import com.ironhack.petshelter.dto.EmployeeDTO;
 import com.ironhack.petshelter.model.Employee;
 
 import java.util.List;
 
 public interface EmployeeService {
+
+    /**
+     * This method is used to update a employee entity to the database.
+     * @param employeeDTO the employee datas to update
+     * @return the updated employee
+     */
+    Employee update(Integer id, EmployeeDTO employeeDTO);
 
     /**
      * This method is used to save a employee entity to the database.
