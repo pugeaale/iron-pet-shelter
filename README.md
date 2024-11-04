@@ -159,6 +159,15 @@ Save a new shelter
 * POST
 * /shelters
 
+Update a shelter
+* PATH
+* /shelters/{id}
+* Request body : {
+  "name": "madrid shelter",
+  "city": "madrid",
+  "phoneNumber": "+34123456789"
+  }
+
 Add animal to a shelter
 * PATH
 * /shelters/add-animal

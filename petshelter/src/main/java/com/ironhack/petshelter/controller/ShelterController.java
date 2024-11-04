@@ -2,6 +2,8 @@ package com.ironhack.petshelter.controller;
 
 import com.ironhack.petshelter.dto.AnimalToShelterDTO;
 import com.ironhack.petshelter.dto.EmployeeToShelterDTO;
+import com.ironhack.petshelter.dto.ShelterDTO;
+import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Shelter;
 import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.ShelterService;
@@ -17,6 +19,11 @@ import java.util.List;
 public class ShelterController {
 
     private final ShelterService shelterService;
+
+    @PatchMapping("/shelters/{id}")
+    public Shelter update(@PathVariable Integer id, @RequestBody ShelterDTO shelterDTO) {
+        return shelterService.update(id, shelterDTO);
+    }
 
     /**
      * Get a list of all shelters

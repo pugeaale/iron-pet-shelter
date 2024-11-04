@@ -1,10 +1,18 @@
 package com.ironhack.petshelter.service;
 
+import com.ironhack.petshelter.dto.ShelterDTO;
 import com.ironhack.petshelter.model.Shelter;
 
 import java.util.List;
 
 public interface ShelterService {
+
+    /**
+     * This method is used to update a Shelter entity to the database.
+     * @param shelterDTO the Shelter datas to update
+     * @return the updated Shelter
+     */
+    Shelter update(Integer id, ShelterDTO shelterDTO);
 
     /**
      * This method is used to save a Shelter entity to the database.
