@@ -1,6 +1,9 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.dto.CatDTO;
+import com.ironhack.petshelter.dto.DogDTO;
 import com.ironhack.petshelter.model.Cat;
+import com.ironhack.petshelter.model.Dog;
 import com.ironhack.petshelter.service.CatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,5 +38,10 @@ public class CatController {
     @ResponseStatus(HttpStatus.CREATED)
     public void saveCat(@RequestBody Cat cat) {
         catService.save(cat);
+    }
+
+    @PatchMapping("/cats/{id}")
+    public Cat update(@PathVariable Integer id, @RequestBody CatDTO catDTO) {
+        return catService.update(id, catDTO);
     }
 }

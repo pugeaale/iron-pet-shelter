@@ -2,7 +2,6 @@ package com.ironhack.petshelter.dataloader;
 
 import com.ironhack.petshelter.dto.*;
 import com.ironhack.petshelter.model.*;
-import com.ironhack.petshelter.repository.ShelterRepository;
 import com.ironhack.petshelter.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,35 +30,13 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        roleService.save(new Role("ROLE_USER"));
-        roleService.save(new Role("ROLE_ADMIN"));
-        roleService.save(new Role("ROLE_VETERINARIAN"));
+        createRoles();
 
-        Shelter shelter = new Shelter();
-        shelter.setName("Shelter1");
-        shelter.setCity("paris");
-        shelterService.save(shelter);
+        createShelters();
 
-        Shelter shelter2 = new Shelter();
-        shelter2.setName("shelter2");
-        shelter2.setCity("lyon");
-        shelterService.save(shelter2);
+        createDogs();
 
-        Dog dog = new Dog();
-        dog.setName("Dog1");
-        dogService.save(dog);
-
-        Dog dog2 = new Dog();
-        dog2.setName("Dog2");
-        dogService.save(dog2);
-
-        Cat cat = new Cat();
-        cat.setName("Cat1");
-        catService.save(cat);
-
-        Cat cat2 = new Cat();
-        cat2.setName("cat2");
-        catService.save(cat2);
+        createCats();
 
         List<Animal> animals = animalService.getAnimals();
         log.info("animals found : {}", animals.size());
@@ -76,41 +53,11 @@ public class DataLoader implements CommandLineRunner {
         Shelter shelter1 = shelterService.getShelterById(1);
         log.info("shelter1 found : {}", shelter1.getName());
 
-        Adopter adopter = new Adopter();
-        adopter.setFirstName("brigitte");
-        adopter.setLastName("bardot");
-        adopterService.save(adopter);
+        createAdopters();
 
-        Adopter adopter2 = new Adopter();
-        adopter2.setFirstName("angela");
-        adopter2.setLastName("guzman");
-        adopterService.save(adopter2);
+        createVeterinarians();
 
-        Veterinarian veterinarian = new Veterinarian();
-        veterinarian.setName("gregory house");
-        veterinarian.setCity("paris");
-        veterinarian.setUsername("ghouse");
-        veterinarian.setPassword("1234");
-        veterinarianService.save(veterinarian);
-        roleService.addRoleToUser("ghouse", "ROLE_VETERINARIAN");
-
-        Veterinarian veterinarian2 = new Veterinarian();
-        veterinarian2.setName("hugo house");
-        veterinarian2.setCity("lyon");
-        veterinarian2.setUsername("hhouse");
-        veterinarian2.setPassword("1234");
-        veterinarianService.save(veterinarian2);
-        roleService.addRoleToUser("hhouse", "ROLE_VETERINARIAN");
-
-        Employee employee = new Employee();
-        employee.setFirstName("ana");
-        employee.setLastName("mendoza");
-        employeeService.save(employee);
-
-        Employee employee2 = new Employee();
-        employee2.setFirstName("tereza");
-        employee2.setLastName("mendoza");
-        employeeService.save(employee2);
+        createEmployees();
 
         Employee employee1 = employeeService.getEmployeeById(1);
         log.info("employee1 found : {}", employee1.getLastName());
@@ -142,11 +89,7 @@ public class DataLoader implements CommandLineRunner {
         List<Adoption> adoptions = adoptionService.getAdoptions();
         log.info("adoptions found : {}", adoptions.size());
 
-        medicalProcedureService.create(animal2.getId(), veterinarian1.getId());
-        medicalProcedureService.create(1, 1L);
-        medicalProcedureService.create(2, 2L);
-        List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
-        log.info("medicalProcedures found : {}", medicalProcedures.size());
+        createMedicalProcedures();
 
         List<Veterinarian> veterinariansByCity = veterinarianService.getVeterinariansByCity("paris");
         log.info("veterinarians found : {}", veterinariansByCity.size());
@@ -163,19 +106,36 @@ public class DataLoader implements CommandLineRunner {
         List<MedicalProcedure> proceduresByVet = medicalProcedureService.getMedicalProceduresByVeterinarian(1L);
         log.info("proceduresByVet found : {}", proceduresByVet.size());
 
-        VeterinarianDTO veterinarianDTO = new VeterinarianDTO();
-        veterinarianDTO.setCity("marseille");
-        veterinarianDTO.setPhoneNumber("1231231231");
-        veterinarianService.update(2L, veterinarianDTO);
-        Veterinarian veterinarian2updated = veterinarianService.getVeterinarianById(2L);
-        log.info("veterinarian2updated : {}", veterinarian2updated.getCity() + " - "  + veterinarian2updated.getPhoneNumber());
+        updateVeterinarian();
 
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setEmail("fake@gmail.org");
-        employeeService.update(1, employeeDTO);
-        Employee employee1Updated = employeeService.getEmployeeById(1);
-        log.info("employee1Updated : {}", employee1Updated.getEmail());
+        updateEmployee();
 
+        updateShelter();
+
+        updateAdopter();
+
+        updateDog();
+
+        createUsers();
+
+        deleteMedicalProcedure();
+    }
+
+    private void createMedicalProcedures() {
+        medicalProcedureService.create(2, 1L);
+        medicalProcedureService.create(1, 1L);
+        medicalProcedureService.create(2, 2L);
+        List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
+        log.info("medicalProcedures found : {}", medicalProcedures.size());
+    }
+
+    private void deleteMedicalProcedure() {
+        medicalProcedureService.deleteMedicalProcedure(1);
+        List<MedicalProcedure> medicalProcedures2 = medicalProcedureService.getMedicalProcedures();
+        log.info("medicalProcedures found : {}", medicalProcedures2.size());
+    }
+
+    private void updateShelter() {
         ShelterDTO shelterDTO = new ShelterDTO();
         shelterDTO.setCity("lisboa");
         shelterDTO.setPhoneNumber("9876543210");
@@ -183,20 +143,61 @@ public class DataLoader implements CommandLineRunner {
         shelterService.update(1, shelterDTO);
         Shelter shelter1Updated = shelterService.getShelterById(1);
         log.info(MessageFormat.format("shelter1Updated : '{}'{0} - {1} -{2}", shelter1Updated.getCity(), shelter1Updated.getPhoneNumber(), shelter1Updated.getName()));
+    }
 
-        AdopterDTO adopterDTO = new AdopterDTO();
-        adopterDTO.setEmail("email@outlook.org");
-        adopterDTO.setPhoneNumber("+33777888999");
-        Adopter adopter1Updated = adopterService.update(1, adopterDTO);
-        log.info("adopter1Updated : {}", adopter1Updated.getEmail() + "-" + adopter1Updated.getPhoneNumber());
-
+    private void updateDog() {
         DogDTO dogDTO = new DogDTO();
         dogDTO.setOkDog(true);
         dogDTO.setOkCat(true);
         dogDTO.setOkChild(true);
         Dog dogUpdated = dogService.update(1, dogDTO);
         log.info("dogUpdated : {}", dogUpdated.getOkDog());
+    }
 
+    private void updateAdopter() {
+        AdopterDTO adopterDTO = new AdopterDTO();
+        adopterDTO.setEmail("email@outlook.org");
+        adopterDTO.setPhoneNumber("+33777888999");
+        Adopter adopter1Updated = adopterService.update(1, adopterDTO);
+        log.info("adopter1Updated : {}", adopter1Updated.getEmail() + "-" + adopter1Updated.getPhoneNumber());
+    }
+
+    private void updateEmployee() {
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        employeeDTO.setEmail("fake@gmail.org");
+        employeeService.update(1, employeeDTO);
+        Employee employee1Updated = employeeService.getEmployeeById(1);
+        log.info("employee1Updated : {}", employee1Updated.getEmail());
+    }
+
+    private void updateVeterinarian() {
+        VeterinarianDTO veterinarianDTO = new VeterinarianDTO();
+        veterinarianDTO.setCity("marseille");
+        veterinarianDTO.setPhoneNumber("1231231231");
+        veterinarianService.update(2L, veterinarianDTO);
+        Veterinarian veterinarian2updated = veterinarianService.getVeterinarianById(2L);
+        log.info("veterinarian2updated : {}", veterinarian2updated.getCity() + " - "  + veterinarian2updated.getPhoneNumber());
+    }
+
+    private void createVeterinarians() {
+        Veterinarian veterinarian = new Veterinarian();
+        veterinarian.setName("gregory house");
+        veterinarian.setCity("paris");
+        veterinarian.setUsername("ghouse");
+        veterinarian.setPassword("1234");
+        veterinarianService.save(veterinarian);
+        roleService.addRoleToUser("ghouse", "ROLE_VETERINARIAN");
+
+        Veterinarian veterinarian2 = new Veterinarian();
+        veterinarian2.setName("hugo house");
+        veterinarian2.setCity("lyon");
+        veterinarian2.setUsername("hhouse");
+        veterinarian2.setPassword("1234");
+        veterinarianService.save(veterinarian2);
+        roleService.addRoleToUser("hhouse", "ROLE_VETERINARIAN");
+    }
+
+    private void createUsers() {
         userService.saveUser(new User("John Doe", "john", "1234"));
         userService.saveUser(new User("James Smith", "james", "1234"));
         userService.saveUser(new User("Chris Anderson", "chris", "1234"));
@@ -205,10 +206,68 @@ public class DataLoader implements CommandLineRunner {
         roleService.addRoleToUser("james", "ROLE_ADMIN");
         roleService.addRoleToUser("chris", "ROLE_ADMIN");
         roleService.addRoleToUser("chris", "ROLE_USER");
+    }
 
-        medicalProcedureService.deleteMedicalProcedure(1);
-        List<MedicalProcedure> medicalProcedures2 = medicalProcedureService.getMedicalProcedures();
-        log.info("medicalProcedures found : {}", medicalProcedures2.size());
+    private void createEmployees() {
+        Employee employee = new Employee();
+        employee.setFirstName("ana");
+        employee.setLastName("mendoza");
+        employeeService.save(employee);
+
+        Employee employee2 = new Employee();
+        employee2.setFirstName("tereza");
+        employee2.setLastName("mendoza");
+        employeeService.save(employee2);
+    }
+
+    private void createAdopters() {
+        Adopter adopter = new Adopter();
+        adopter.setFirstName("brigitte");
+        adopter.setLastName("bardot");
+        adopterService.save(adopter);
+
+        Adopter adopter2 = new Adopter();
+        adopter2.setFirstName("angela");
+        adopter2.setLastName("guzman");
+        adopterService.save(adopter2);
+    }
+
+    private void createRoles() {
+        roleService.save(new Role("ROLE_USER"));
+        roleService.save(new Role("ROLE_ADMIN"));
+        roleService.save(new Role("ROLE_VETERINARIAN"));
+    }
+
+    private void createShelters() {
+        Shelter shelter = new Shelter();
+        shelter.setName("Shelter1");
+        shelter.setCity("paris");
+        shelterService.save(shelter);
+
+        Shelter shelter2 = new Shelter();
+        shelter2.setName("shelter2");
+        shelter2.setCity("lyon");
+        shelterService.save(shelter2);
+    }
+
+    private void createCats() {
+        Cat cat = new Cat();
+        cat.setName("Cat1");
+        catService.save(cat);
+
+        Cat cat2 = new Cat();
+        cat2.setName("cat2");
+        catService.save(cat2);
+    }
+
+    private void createDogs() {
+        Dog dog = new Dog();
+        dog.setName("Dog1");
+        dogService.save(dog);
+
+        Dog dog2 = new Dog();
+        dog2.setName("Dog2");
+        dogService.save(dog2);
     }
 
 

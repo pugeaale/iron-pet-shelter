@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.service;
 
+import com.ironhack.petshelter.dto.CatDTO;
 import com.ironhack.petshelter.model.Cat;
 
 import java.util.List;
@@ -19,4 +20,11 @@ public interface CatService {
      * @return a List of all cat entities.
      */
     List<Cat> getCats();
+
+    /**
+     * This method is used to update a cat entity to the database.
+     * @param catDTO the cat datas to update
+     * @return the updated cat
+     */
+    Cat update(Integer id, CatDTO catDTO);
 }
