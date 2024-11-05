@@ -236,6 +236,13 @@ Get a list of all cats
 * GET
 * /cats
 
+Update a cat
+* PATH
+* /cats/{id}
+* Request body : {
+  "breed": "siamese"
+  }
+
 ### Animals
 
 Get a list of all animals
