@@ -36,4 +36,9 @@ public interface MedicalProcedureService {
      */
     MedicalProcedure create(Integer animalId, Long veterinarianId);
 
+    /**
+     * Delete medical procedure by id
+     * @param id the id of the medical procedure
+     */
+    void deleteMedicalProcedure(Integer id);
 }

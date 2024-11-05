@@ -261,6 +261,10 @@ Get animals by shelter
 ### ROLE_USER
 
 ### ROLE_ADMIN
+* METHOD : DELETE
+* /api/medical-procedures/{id}
+* Path variable : 'id' of the medical procedure
+* example : /api/medical-procedures/1
 
 ## Future work
 
