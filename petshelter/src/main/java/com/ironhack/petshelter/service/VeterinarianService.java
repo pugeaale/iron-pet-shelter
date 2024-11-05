@@ -12,7 +12,7 @@ public interface VeterinarianService {
      * @param veterinarianDTO the veterinarian datas to update
      * @return the updated veterinarian
      */
-    Veterinarian update(Integer id, VeterinarianDTO veterinarianDTO);
+    Veterinarian update(Long id, VeterinarianDTO veterinarianDTO);
 
     /**
      * This method is used to save a veterinarian entity to the database.
@@ -41,5 +41,5 @@ public interface VeterinarianService {
      * @param id the id of the Veterinarian to be retrieved
      * @return the retrieved Veterinarian
      */
-    Veterinarian getVeterinarianById(Integer id);
+    Veterinarian getVeterinarianById(Long id);
 }

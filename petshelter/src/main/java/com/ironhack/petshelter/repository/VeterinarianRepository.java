@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface VeterinarianRepository extends JpaRepository<Veterinarian, Integer> {
+public interface VeterinarianRepository extends JpaRepository<Veterinarian, Long> {
 
     /**
      * Get list of veterinarian by city

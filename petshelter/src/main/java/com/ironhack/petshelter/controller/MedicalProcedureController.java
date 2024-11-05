@@ -33,7 +33,7 @@ public class MedicalProcedureController {
      */
     @GetMapping("/medical-procedures-by-veterinarian")
     @ResponseStatus(HttpStatus.OK)
-    public List<MedicalProcedure> getMedicalProceduresByVeterinarian(@RequestParam Integer veterinarianId) {
+    public List<MedicalProcedure> getMedicalProceduresByVeterinarian(@RequestParam Long veterinarianId) {
         return medicalProcedureService.getMedicalProceduresByVeterinarian(veterinarianId);
     }
 
@@ -56,7 +56,7 @@ public class MedicalProcedureController {
      */
     @PostMapping("/medical-procedures")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createMedicalProcedure(@RequestBody Integer animalId, Integer veterinarianId) {
+    public void createMedicalProcedure(@RequestBody Integer animalId, Long veterinarianId) {
         medicalProcedureService.create(animalId, veterinarianId);
     }
 

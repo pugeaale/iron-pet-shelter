@@ -21,9 +21,9 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     @Transactional
     @Override
-    public Veterinarian update(Integer idInteger, VeterinarianDTO veterinarianDTO) {
-        log.info("VeterinarianServiceImpl.update");
-        Veterinarian veterinarian = getVeterinarianById(idInteger);
+    public Veterinarian update(Long vetId, VeterinarianDTO veterinarianDTO) {
+        log.info("update veterinarian id:{}", vetId);
+        Veterinarian veterinarian = getVeterinarianById(vetId);
         if(veterinarian == null) return null;
         veterinarian.setCity(veterinarianDTO.getCity());
         veterinarian.setPhoneNumber(veterinarianDTO.getPhoneNumber());
@@ -33,7 +33,7 @@ public class VeterinarianServiceImpl implements VeterinarianService {
     @Transactional
     @Override
     public Veterinarian save(Veterinarian veterinarian) {
-        log.info("Saving new veterinarian {} to the database", veterinarian.getLastName());
+        log.info("Saving new veterinarian {} to the database", veterinarian.getName());
         return veterinarianRepository.save(veterinarian);
     }
 
@@ -50,7 +50,7 @@ public class VeterinarianServiceImpl implements VeterinarianService {
     }
 
     @Override
-    public Veterinarian getVeterinarianById(Integer id) {
+    public Veterinarian getVeterinarianById(Long id) {
         log.info("Fetching Veterinarian by id {}", id);
         Optional<Veterinarian> veterinarian = veterinarianRepository.findById(id);
         return veterinarian.orElse(null);

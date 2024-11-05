@@ -34,14 +34,14 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
     }
 
     @Override
-    public List<MedicalProcedure> getMedicalProceduresByVeterinarian(Integer veterinarianId) {
+    public List<MedicalProcedure> getMedicalProceduresByVeterinarian(Long veterinarianId) {
         log.info("Fetching all medical procedures by veterinarian id: {}", veterinarianId);
         return medicalProcedureRepository.findMedicalProcedureByVeterinarianId(veterinarianId);
     }
 
     @Transactional
     @Override
-    public MedicalProcedure create(Integer animalId, Integer veterinarianId) {
+    public MedicalProcedure create(Integer animalId, Long veterinarianId) {
         log.info("Saving new Medical Procedure to the database [animalId:"+animalId+", veterinarianId:"+veterinarianId+"]");
         Animal animal = animalService.getAnimalById(animalId);
         if( animal == null )

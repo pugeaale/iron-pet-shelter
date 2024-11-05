@@ -33,17 +33,16 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         roleService.save(new Role("ROLE_USER"));
         roleService.save(new Role("ROLE_ADMIN"));
+        roleService.save(new Role("ROLE_VETERINARIAN"));
 
-        userService.saveUser(new User("John Doe", "john", "1234"));
-        userService.saveUser(new User("James Smith", "james", "1234"));
-        userService.saveUser(new User("Jane Carry", "jane", "1234"));
-        userService.saveUser(new User("Chris Anderson", "chris", "1234"));
-
-        roleService.addRoleToUser("john", "ROLE_USER");
-        roleService.addRoleToUser("james", "ROLE_ADMIN");
-        roleService.addRoleToUser("jane", "ROLE_USER");
-        roleService.addRoleToUser("chris", "ROLE_ADMIN");
-        roleService.addRoleToUser("chris", "ROLE_USER");
+//        userService.saveUser(new User("John Doe", "john", "1234"));
+//        userService.saveUser(new User("James Smith", "james", "1234"));
+//        userService.saveUser(new User("Chris Anderson", "chris", "1234"));
+//
+//        roleService.addRoleToUser("john", "ROLE_USER");
+//        roleService.addRoleToUser("james", "ROLE_ADMIN");
+//        roleService.addRoleToUser("chris", "ROLE_ADMIN");
+//        roleService.addRoleToUser("chris", "ROLE_USER");
 
         Shelter shelter = new Shelter();
         shelter.setName("Shelter1");
@@ -97,16 +96,20 @@ public class DataLoader implements CommandLineRunner {
         adopterService.save(adopter2);
 
         Veterinarian veterinarian = new Veterinarian();
-        veterinarian.setFirstName("gregory");
+        veterinarian.setName("gregory house");
         veterinarian.setCity("paris");
-        veterinarian.setLastName("house");
+        veterinarian.setUsername("ghouse");
+        veterinarian.setPassword("1234");
         veterinarianService.save(veterinarian);
+        roleService.addRoleToUser("ghouse", "ROLE_VETERINARIAN");
 
         Veterinarian veterinarian2 = new Veterinarian();
-        veterinarian2.setFirstName("hugo");
-        veterinarian2.setLastName("house");
+        veterinarian2.setName("hugo house");
         veterinarian2.setCity("lyon");
+        veterinarian2.setUsername("hhouse");
+        veterinarian2.setPassword("1234");
         veterinarianService.save(veterinarian2);
+        roleService.addRoleToUser("hhouse", "ROLE_VETERINARIAN");
 
         Employee employee = new Employee();
         employee.setFirstName("ana");
@@ -133,8 +136,8 @@ public class DataLoader implements CommandLineRunner {
         List<Veterinarian> veterinarians = veterinarianService.getVeterinarians();
         log.info("veterinarians found : {}", veterinarians.size());
 
-        Veterinarian veterinarian1 = veterinarianService.getVeterinarianById(1);
-        log.info("veterinarian1 found : {}", veterinarian1.getLastName());
+        Veterinarian veterinarian1 = veterinarianService.getVeterinarianById(1L);
+        log.info("veterinarian1 found : {}", veterinarian1.getName());
 
         Animal animal2 = animalService.getAnimalById(2);
         log.info("animal2 found : {}", animal2.getName());
@@ -149,8 +152,8 @@ public class DataLoader implements CommandLineRunner {
         log.info("adoptions found : {}", adoptions.size());
 
         medicalProcedureService.create(animal2.getId(), veterinarian1.getId());
-        medicalProcedureService.create(1, 1);
-        medicalProcedureService.create(2, 2);
+        medicalProcedureService.create(1, 1L);
+        medicalProcedureService.create(2, 2L);
         List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
         log.info("medicalProcedures found : {}", medicalProcedures.size());
 
@@ -166,14 +169,14 @@ public class DataLoader implements CommandLineRunner {
         List<MedicalProcedure> proceduresByAnimal = medicalProcedureService.getMedicalProceduresByAnimal(2);
         log.info("proceduresByAnimal found : {}", proceduresByAnimal.size());
 
-        List<MedicalProcedure> proceduresByVet = medicalProcedureService.getMedicalProceduresByVeterinarian(1);
+        List<MedicalProcedure> proceduresByVet = medicalProcedureService.getMedicalProceduresByVeterinarian(1L);
         log.info("proceduresByVet found : {}", proceduresByVet.size());
 
         VeterinarianDTO veterinarianDTO = new VeterinarianDTO();
         veterinarianDTO.setCity("marseille");
         veterinarianDTO.setPhoneNumber("1231231231");
-        veterinarianService.update(2, veterinarianDTO);
-        Veterinarian veterinarian2updated = veterinarianService.getVeterinarianById(2);
+        veterinarianService.update(2L, veterinarianDTO);
+        Veterinarian veterinarian2updated = veterinarianService.getVeterinarianById(2L);
         log.info("veterinarian2updated : {}", veterinarian2updated.getCity() + " - "  + veterinarian2updated.getPhoneNumber());
 
         EmployeeDTO employeeDTO = new EmployeeDTO();
