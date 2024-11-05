@@ -253,6 +253,15 @@ Get animals by shelter
 * Request param : 'shelterId' to locate animals
 * ex: /animals-by-shelter?shelterId=1
 
+## Security
+
+### ROLE_VETERINARIAN
+* METHOD : POST
+* /api/medical-procedures
+### ROLE_USER
+
+### ROLE_ADMIN
+
 ## Future work
 
 ## Extra links

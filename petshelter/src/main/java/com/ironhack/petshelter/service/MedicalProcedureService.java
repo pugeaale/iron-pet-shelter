@@ -12,7 +12,7 @@ public interface MedicalProcedureService {
      *
      * @return a List of all medical procedures entities for a veterinarian
      */
-    List<MedicalProcedure> getMedicalProceduresByVeterinarian(Integer veterinarianId);
+    List<MedicalProcedure> getMedicalProceduresByVeterinarian(Long veterinarianId);
 
     /**
      * This method is used to retrieve all medical procedures entities for an animal
@@ -34,6 +34,6 @@ public interface MedicalProcedureService {
      * @param veterinarianId the veterinarian id
      * @return the saved medical procedure
      */
-    MedicalProcedure create(Integer animalId, Integer veterinarianId);
+    MedicalProcedure create(Integer animalId, Long veterinarianId);
 
 }

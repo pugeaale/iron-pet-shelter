@@ -11,15 +11,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-public class Veterinarian {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    private String firstName;
-
-    private String lastName;
+public class Veterinarian extends User {
 
     private String city;
 

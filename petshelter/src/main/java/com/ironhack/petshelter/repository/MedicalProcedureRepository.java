@@ -21,6 +21,6 @@ public interface MedicalProcedureRepository extends JpaRepository<MedicalProcedu
      * @param veterinarianId the id of veterinarian
      * @return the list of medical procedures by veterinarian id
      */
-    List<MedicalProcedure> findMedicalProcedureByVeterinarianId(Integer veterinarianId);
+    List<MedicalProcedure> findMedicalProcedureByVeterinarianId(Long veterinarianId);
 
 }
