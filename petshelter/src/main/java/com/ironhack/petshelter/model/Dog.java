@@ -1,9 +1,6 @@
 package com.ironhack.petshelter.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +8,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Dog extends Animal {
+
+    private Boolean okDog;
+
+    private  Boolean okCat;
+
+    private Boolean okChild;
+
+    private String breed;
 
     public Dog(String name) {
         super(name);

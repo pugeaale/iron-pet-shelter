@@ -217,6 +217,15 @@ Get a list of all dogs
 * GET
 * /dogs
 
+Update a dog
+* PATH
+* /dogs/{id}
+* Request body : {
+  "okDog": "true",
+  "okCat": "false",
+  "okChild": "true"
+  }
+
 ### Cat
 
 Save a new cat

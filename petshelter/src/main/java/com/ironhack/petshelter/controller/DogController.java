@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.dto.DogDTO;
 import com.ironhack.petshelter.model.Dog;
 import com.ironhack.petshelter.service.DogService;
 import lombok.RequiredArgsConstructor;
@@ -35,5 +36,10 @@ public class DogController {
     @ResponseStatus(HttpStatus.CREATED)
     public void saveDog(@RequestBody Dog dog) {
         dogService.save(dog);
+    }
+
+    @PatchMapping("/dogs/{id}")
+    public Dog update(@PathVariable Integer id, @RequestBody DogDTO dogDTO) {
+        return dogService.update(id, dogDTO);
     }
 }
