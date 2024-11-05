@@ -60,4 +60,14 @@ public class MedicalProcedureController {
         medicalProcedureService.create(animalId, veterinarianId);
     }
 
+    /**
+     * delete a medical procedure
+     *
+     * @param id the id of the medical procedure
+     */
+    @DeleteMapping("/medical-procedures/{id}")
+    public void createMedicalProcedure(@PathVariable Integer id) {
+        medicalProcedureService.deleteMedicalProcedure(id);
+    }
+
 }

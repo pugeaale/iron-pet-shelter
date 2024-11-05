@@ -35,15 +35,6 @@ public class DataLoader implements CommandLineRunner {
         roleService.save(new Role("ROLE_ADMIN"));
         roleService.save(new Role("ROLE_VETERINARIAN"));
 
-//        userService.saveUser(new User("John Doe", "john", "1234"));
-//        userService.saveUser(new User("James Smith", "james", "1234"));
-//        userService.saveUser(new User("Chris Anderson", "chris", "1234"));
-//
-//        roleService.addRoleToUser("john", "ROLE_USER");
-//        roleService.addRoleToUser("james", "ROLE_ADMIN");
-//        roleService.addRoleToUser("chris", "ROLE_ADMIN");
-//        roleService.addRoleToUser("chris", "ROLE_USER");
-
         Shelter shelter = new Shelter();
         shelter.setName("Shelter1");
         shelter.setCity("paris");
@@ -205,5 +196,20 @@ public class DataLoader implements CommandLineRunner {
         dogDTO.setOkChild(true);
         Dog dogUpdated = dogService.update(1, dogDTO);
         log.info("dogUpdated : {}", dogUpdated.getOkDog());
+
+        userService.saveUser(new User("John Doe", "john", "1234"));
+        userService.saveUser(new User("James Smith", "james", "1234"));
+        userService.saveUser(new User("Chris Anderson", "chris", "1234"));
+
+        roleService.addRoleToUser("john", "ROLE_USER");
+        roleService.addRoleToUser("james", "ROLE_ADMIN");
+        roleService.addRoleToUser("chris", "ROLE_ADMIN");
+        roleService.addRoleToUser("chris", "ROLE_USER");
+
+        medicalProcedureService.deleteMedicalProcedure(1);
+        List<MedicalProcedure> medicalProcedures2 = medicalProcedureService.getMedicalProcedures();
+        log.info("medicalProcedures found : {}", medicalProcedures2.size());
     }
+
+
 }

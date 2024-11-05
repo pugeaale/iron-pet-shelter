@@ -58,4 +58,10 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
         veterinarianService.save(veterinarian);
         return medicalProcedureRepository.save(medicalProcedure);
     }
+
+    @Override
+    public void deleteMedicalProcedure(Integer id) {
+        log.info("Deleting Medical Procedure with id: {}", id);
+        medicalProcedureRepository.deleteById(id);
+    }
 }
