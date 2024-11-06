@@ -214,7 +214,7 @@ public class DataLoader implements CommandLineRunner {
         Employee employee = new Employee();
         employee.setName("ana mendoza");
         employee.setUsername("anam");
-        employee.setPassword("1234");
+        employee.setPassword("{noop}1234");
         employeeService.save(employee);
         roleService.addRoleToUser("anam", "ROLE_EMPLOYEE");
         employeeService.save(employee);
@@ -273,10 +273,12 @@ public class DataLoader implements CommandLineRunner {
     private void createCats() {
         Cat cat = new Cat();
         cat.setName("Cat1");
+        cat.setBreed("x");
         catService.save(cat);
 
         Cat cat2 = new Cat();
         cat2.setName("cat2");
+        cat2.setBreed("siamois");
         catService.save(cat2);
     }
 
