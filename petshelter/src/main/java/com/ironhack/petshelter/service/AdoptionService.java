@@ -19,6 +19,6 @@ public interface AdoptionService {
      * @param adopterId the adopter id who is adopting
      * @return the saved Adoption
      */
-    Adoption create(Integer animalId, Integer adopterId);
+    Adoption create(Integer animalId, Long adopterId);
 
 }

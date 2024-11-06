@@ -262,9 +262,14 @@ Get animals by shelter
 
 ## Security
 
+### ROLE_ADOPTER
+* METHOD : POST
+* /api/adoptions
+* 
 ### ROLE_VETERINARIAN
 * METHOD : POST
 * /api/medical-procedures
+
 ### ROLE_USER
 
 ### ROLE_ADMIN

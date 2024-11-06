@@ -31,7 +31,8 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         createRoles();
-
+        createVeterinarians();
+        createAdopters();
         createShelters();
 
         createDogs();
@@ -53,17 +54,17 @@ public class DataLoader implements CommandLineRunner {
         Shelter shelter1 = shelterService.getShelterById(1);
         log.info("shelter1 found : {}", shelter1.getName());
 
-        createAdopters();
 
-        createVeterinarians();
+
+
 
         createEmployees();
 
         Employee employee1 = employeeService.getEmployeeById(1);
         log.info("employee1 found : {}", employee1.getLastName());
 
-        Adopter adopter1 = adopterService.getAdopterById(1);
-        log.info("adopter1 found : {}", adopter1.getLastName());
+        Adopter adopter1 = adopterService.getAdopterById(3L);
+        log.info("adopter1 found : {}", adopter1.getName());
 
         List<Adopter> adopters = adopterService.getAdopters();
         log.info("adopters found : {}", adopters.size());
@@ -158,7 +159,7 @@ public class DataLoader implements CommandLineRunner {
         AdopterDTO adopterDTO = new AdopterDTO();
         adopterDTO.setEmail("email@outlook.org");
         adopterDTO.setPhoneNumber("+33777888999");
-        Adopter adopter1Updated = adopterService.update(1, adopterDTO);
+        Adopter adopter1Updated = adopterService.update(3L, adopterDTO);
         log.info("adopter1Updated : {}", adopter1Updated.getEmail() + "-" + adopter1Updated.getPhoneNumber());
     }
 
@@ -222,20 +223,25 @@ public class DataLoader implements CommandLineRunner {
 
     private void createAdopters() {
         Adopter adopter = new Adopter();
-        adopter.setFirstName("brigitte");
-        adopter.setLastName("bardot");
+        adopter.setName("brigitte bardot");
+        adopter.setUsername("bardo");
+        adopter.setPassword("1234");
         adopterService.save(adopter);
+        roleService.addRoleToUser("bardo", "ROLE_ADOPTER");
 
         Adopter adopter2 = new Adopter();
-        adopter2.setFirstName("angela");
-        adopter2.setLastName("guzman");
+        adopter2.setName("angela guzman");
+        adopter2.setUsername("aguz");
+        adopter2.setPassword("1234");
         adopterService.save(adopter2);
+        roleService.addRoleToUser("aguz", "ROLE_ADOPTER");
     }
 
     private void createRoles() {
         roleService.save(new Role("ROLE_USER"));
         roleService.save(new Role("ROLE_ADMIN"));
         roleService.save(new Role("ROLE_VETERINARIAN"));
+        roleService.save(new Role("ROLE_ADOPTER"));
     }
 
     private void createShelters() {
