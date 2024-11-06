@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Past;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ public class Employee extends User {
 
     private String email;
 
+    @Past(message = "employee dateOfBirth must be in the past")
     private LocalDate dateOfBirth;
 
     @ManyToOne

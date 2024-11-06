@@ -3,6 +3,7 @@ package com.ironhack.petshelter.controller;
 import com.ironhack.petshelter.dto.EmployeeDTO;
 import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -45,12 +46,12 @@ public class EmployeeController {
 
     /**
      * Save a new employee
-     *
      * @param employee the employee to be saved
+     * @return the employee created
      */
     @PostMapping("/employees")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveEmployee(@RequestBody Employee employee) {
-        employeeService.save(employee);
+    public Employee saveEmployee(@RequestBody @Valid Employee employee) {
+        return employeeService.save(employee);
     }
 }

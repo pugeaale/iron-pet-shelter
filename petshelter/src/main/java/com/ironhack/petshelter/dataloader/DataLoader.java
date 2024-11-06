@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
+import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -215,17 +216,17 @@ public class DataLoader implements CommandLineRunner {
         employee.setName("ana mendoza");
         employee.setUsername("anam");
         employee.setPassword("{noop}1234");
+        employee.setDateOfBirth(LocalDate.of(2000,1,1));
         employeeService.save(employee);
         roleService.addRoleToUser("anam", "ROLE_EMPLOYEE");
-        employeeService.save(employee);
 
         Employee employee2 = new Employee();
         employee2.setName("tereza mendoza");
         employee2.setUsername("mendt");
-        employee2.setPassword("1234");
+        employee2.setPassword("{noop}1234");
+        employee2.setDateOfBirth(LocalDate.of(1989,1,1));
         employeeService.save(employee2);
         roleService.addRoleToUser("mendt", "ROLE_EMPLOYEE");
-        employeeService.save(employee2);
     }
 
     private void createAdopters() {
