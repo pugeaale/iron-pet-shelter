@@ -3,10 +3,9 @@ package com.ironhack.petshelter.controller;
 import com.ironhack.petshelter.dto.AnimalToShelterDTO;
 import com.ironhack.petshelter.dto.EmployeeToShelterDTO;
 import com.ironhack.petshelter.dto.ShelterDTO;
-import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Shelter;
-import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.ShelterService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -65,8 +64,8 @@ public class ShelterController {
      */
     @PostMapping("/shelters")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveShelter(@RequestBody Shelter shelter) {
-        shelterService.save(shelter);
+    public Shelter saveShelter(@RequestBody @Valid Shelter shelter) {
+        return shelterService.save(shelter);
     }
 
     /**
