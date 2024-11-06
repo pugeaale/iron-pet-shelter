@@ -31,7 +31,7 @@ public class AdoptionServiceImpl implements AdoptionService {
 
     @Transactional
     @Override
-    public Adoption create(Integer animalId, Integer adopterId) {
+    public Adoption create(Integer animalId, Long adopterId) {
         log.info("Saving new Adoption to the database [animalId:"+animalId+", adopterId:"+adopterId+"]");
         Animal animal = animalService.getAnimalById(animalId);
         if( animal == null )

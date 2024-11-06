@@ -15,7 +15,7 @@ public interface AdopterService {
      * @param adopterDTO the Adopter datas to update
      * @return the updated Adopter
      */
-    Adopter update(Integer id, AdopterDTO adopterDTO);
+    Adopter update(Long id, AdopterDTO adopterDTO);
 
     /**
      * This method is used to save a adopter entity to the database.
@@ -28,7 +28,7 @@ public interface AdopterService {
      * @param id the id of the adopter to be retrieved
      * @return the retrieved adopter
      */
-    Adopter getAdopterById(Integer id);
+    Adopter getAdopterById(Long id);
     /**
      * This method is used to retrieve all Adopter entities from the database.
      *

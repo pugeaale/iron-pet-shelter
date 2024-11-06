@@ -23,7 +23,7 @@ public class AdopterController {
      */
     @GetMapping("/adopters/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Adopter getAdopterById(@PathVariable Integer id) {
+    public Adopter getAdopterById(@PathVariable Long id) {
         return adopterService.getAdopterById(id);
     }
 
@@ -39,7 +39,7 @@ public class AdopterController {
     }
 
     @PatchMapping("/adopters/{id}")
-    public Adopter update(@PathVariable Integer id, @RequestBody AdopterDTO adopterDTO) {
+    public Adopter update(@PathVariable Long id, @RequestBody AdopterDTO adopterDTO) {
         return adopterService.update(id, adopterDTO);
     }
 

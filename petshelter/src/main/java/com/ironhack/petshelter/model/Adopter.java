@@ -11,15 +11,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-public class Adopter {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    private String firstName;
-
-    private String lastName;
+public class Adopter extends User {
 
     private String email;
 

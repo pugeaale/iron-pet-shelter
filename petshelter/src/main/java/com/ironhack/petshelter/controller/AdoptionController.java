@@ -24,7 +24,7 @@ public class AdoptionController {
      */
     @PostMapping("/adoptions")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveAdoption(@RequestBody Integer animalId, Integer adopterId) {
+    public void saveAdoption(@RequestBody Integer animalId, Long adopterId) {
         adoptionService.create(animalId, adopterId);
     }
 

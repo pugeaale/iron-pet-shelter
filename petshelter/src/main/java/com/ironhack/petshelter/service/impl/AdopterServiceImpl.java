@@ -21,7 +21,7 @@ public class AdopterServiceImpl implements AdopterService {
 
     @Transactional
     @Override
-    public Adopter update(Integer idInteger, AdopterDTO adopterDTO) {
+    public Adopter update(Long idInteger, AdopterDTO adopterDTO) {
         log.info("update adopter id:{}", idInteger);
         Adopter adopter = getAdopterById(idInteger);
         if(adopter == null) return null;
@@ -33,7 +33,7 @@ public class AdopterServiceImpl implements AdopterService {
     @Transactional
     @Override
     public Adopter save(Adopter adopter) {
-        log.info("Saving new adopter {} to the database", adopter.getLastName());
+        log.info("Saving new adopter {} to the database", adopter.getName());
         return adopterRepository.save(adopter);
     }
 
@@ -44,7 +44,7 @@ public class AdopterServiceImpl implements AdopterService {
     }
 
     @Override
-    public Adopter getAdopterById(Integer id) {
+    public Adopter getAdopterById(Long id) {
         log.info("Fetching adopter by id {}", id);
         Optional<Adopter> adopter = adopterRepository.findById(id);
         return adopter.orElse(null);
