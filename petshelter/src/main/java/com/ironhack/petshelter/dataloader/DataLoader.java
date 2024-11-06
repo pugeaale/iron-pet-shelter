@@ -52,7 +52,7 @@ public class DataLoader implements CommandLineRunner {
         List<Shelter> shelters = shelterService.getShelters();
         log.info("shelters found : {}", shelters.size());
 
-        Shelter shelter1 = shelterService.getShelterById(1);
+        Shelter shelter1 = shelterService.getShelterById(7L);
         log.info("shelter1 found : {}", shelter1.getName());
 
 
@@ -82,9 +82,9 @@ public class DataLoader implements CommandLineRunner {
         Animal animal2 = animalService.getAnimalById(2);
         log.info("animal2 found : {}", animal2.getName());
 
-        shelterService.addAnimalToShelter(1,1);
+        shelterService.addAnimalToShelter(1,7L);
 
-        shelterService.addEmployeeToShelter(5L,1);
+        shelterService.addEmployeeToShelter(5L,7L);
 
         adoptionService.create(animal2.getId(),adopter1.getId());
 
@@ -142,8 +142,8 @@ public class DataLoader implements CommandLineRunner {
         shelterDTO.setCity("lisboa");
         shelterDTO.setPhoneNumber("9876543210");
         shelterDTO.setName("best shelter ever");
-        shelterService.update(1, shelterDTO);
-        Shelter shelter1Updated = shelterService.getShelterById(1);
+        shelterService.update(7L, shelterDTO);
+        Shelter shelter1Updated = shelterService.getShelterById(7L);
         log.info(MessageFormat.format("shelter1Updated : '{}'{0} - {1} -{2}", shelter1Updated.getCity(), shelter1Updated.getPhoneNumber(), shelter1Updated.getName()));
     }
 
@@ -250,18 +250,24 @@ public class DataLoader implements CommandLineRunner {
         roleService.save(new Role("ROLE_VETERINARIAN"));
         roleService.save(new Role("ROLE_ADOPTER"));
         roleService.save(new Role("ROLE_EMPLOYEE"));
+        roleService.save(new Role("ROLE_SHELTER"));
     }
 
     private void createShelters() {
         Shelter shelter = new Shelter();
         shelter.setName("Shelter1");
         shelter.setCity("paris");
+        shelter.setUsername("shelter");
+        shelter.setPassword("1234");
         shelterService.save(shelter);
-
+        roleService.addRoleToUser("shelter", "ROLE_SHELTER");
         Shelter shelter2 = new Shelter();
         shelter2.setName("shelter2");
         shelter2.setCity("lyon");
+        shelter2.setUsername("shel2");
+        shelter2.setPassword("1234");
         shelterService.save(shelter2);
+        roleService.addRoleToUser("shel2", "ROLE_SHELTER");
     }
 
     private void createCats() {

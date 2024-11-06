@@ -10,5 +10,5 @@ public class EmployeeToShelterDTO {
 
     private Long employeeId;
 
-    private Integer shelterId;
+    private Long shelterId;
 }

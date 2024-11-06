@@ -262,6 +262,10 @@ Get animals by shelter
 
 ## Security
 
+### ROLE_SHELTER
+* METHOD : PATCH
+* /api/shelters/add-employee
+
 ### ROLE_EMPLOYEE
 * METHOD : POST
 * /api/cats

@@ -12,7 +12,7 @@ public interface ShelterService {
      * @param shelterDTO the Shelter datas to update
      * @return the updated Shelter
      */
-    Shelter update(Integer id, ShelterDTO shelterDTO);
+    Shelter update(Long id, ShelterDTO shelterDTO);
 
     /**
      * This method is used to save a Shelter entity to the database.
@@ -38,19 +38,19 @@ public interface ShelterService {
      * @param id the id of the shelter to be retrieved
      * @return the retrieved shelter
      */
-    Shelter getShelterById(Integer id);
+    Shelter getShelterById(Long id);
 
     /**
      * This method is used to add an animal by id to a shelter by id
      * @param animalId the id of the animal to add to the shelter
      * @param shelterId the id of the shelter to add the animal
      */
-    void addAnimalToShelter(Integer animalId, Integer shelterId);
+    void addAnimalToShelter(Integer animalId, Long shelterId);
 
     /**
      * This method is used to add an employee by id to a shelter by id
      * @param employeeId the id of the employee to add to the shelter
      * @param shelterId the id of the shelter to add the employee
      */
-    void addEmployeeToShelter(Long employeeId, Integer shelterId);
+    void addEmployeeToShelter(Long employeeId, Long shelterId);
 }

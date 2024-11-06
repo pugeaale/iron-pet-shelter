@@ -21,7 +21,7 @@ public class ShelterController {
     private final ShelterService shelterService;
 
     @PatchMapping("/shelters/{id}")
-    public Shelter update(@PathVariable Integer id, @RequestBody ShelterDTO shelterDTO) {
+    public Shelter update(@PathVariable Long id, @RequestBody ShelterDTO shelterDTO) {
         return shelterService.update(id, shelterDTO);
     }
 
@@ -54,7 +54,7 @@ public class ShelterController {
      */
     @GetMapping("/shelters/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Shelter getShelterById(@PathVariable Integer id) {
+    public Shelter getShelterById(@PathVariable Long id) {
         return shelterService.getShelterById(id);
     }
 
