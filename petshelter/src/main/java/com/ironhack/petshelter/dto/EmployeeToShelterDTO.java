@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class EmployeeToShelterDTO {
 
-    private Integer employeeId;
+    private Long employeeId;
 
     private Integer shelterId;
 }

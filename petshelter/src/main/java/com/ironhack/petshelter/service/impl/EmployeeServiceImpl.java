@@ -1,9 +1,7 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.dto.EmployeeDTO;
-import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.model.Employee;
-import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.repository.EmployeeRepository;
 import com.ironhack.petshelter.service.EmployeeService;
 import jakarta.transaction.Transactional;
@@ -23,9 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override
-    public Employee update(Integer idInteger, EmployeeDTO employeeDTO) {
-        log.info("employee update id:{}", idInteger);
-        Employee employee = getEmployeeById(idInteger);
+    public Employee update(Long id, EmployeeDTO employeeDTO) {
+        log.info("employee update id:{}", id);
+        Employee employee = getEmployeeById(id);
         if(employee == null) return null;
         employee.setEmail(employeeDTO.getEmail());
         return employeeRepository.save(employee);
@@ -34,12 +32,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     @Override
     public Employee save(Employee employee) {
-        log.info("Saving new employee {} to the database", employee.getLastName());
+        log.info("Saving new employee {} to the database", employee.getName());
         return employeeRepository.save(employee);
     }
 
     @Override
-    public Employee getEmployeeById(Integer id) {
+    public Employee getEmployeeById(Long id) {
         log.info("Fetching employee by id {}", id);
         Optional<Employee> employee = employeeRepository.findById(id);
         return employee.orElse(null);

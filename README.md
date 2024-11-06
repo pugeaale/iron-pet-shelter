@@ -262,10 +262,14 @@ Get animals by shelter
 
 ## Security
 
+### ROLE_EMPLOYEE
+* METHOD : POST
+* /api/cats
+
 ### ROLE_ADOPTER
 * METHOD : POST
 * /api/adoptions
-* 
+
 ### ROLE_VETERINARIAN
 * METHOD : POST
 * /api/medical-procedures
@@ -280,12 +284,16 @@ Get animals by shelter
 
 ## Future work
 
+Frontend
+
 ## Extra links
 
 Slides
 
-
 ## Ressources
+
+Spring boot
+
 
 ## Team members
 

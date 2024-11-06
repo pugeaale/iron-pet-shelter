@@ -33,6 +33,7 @@ public class DataLoader implements CommandLineRunner {
         createRoles();
         createVeterinarians();
         createAdopters();
+        createEmployees();
         createShelters();
 
         createDogs();
@@ -58,10 +59,10 @@ public class DataLoader implements CommandLineRunner {
 
 
 
-        createEmployees();
 
-        Employee employee1 = employeeService.getEmployeeById(1);
-        log.info("employee1 found : {}", employee1.getLastName());
+
+        Employee employee1 = employeeService.getEmployeeById(5L);
+        log.info("employee1 found : {}", employee1.getName());
 
         Adopter adopter1 = adopterService.getAdopterById(3L);
         log.info("adopter1 found : {}", adopter1.getName());
@@ -83,7 +84,7 @@ public class DataLoader implements CommandLineRunner {
 
         shelterService.addAnimalToShelter(1,1);
 
-        shelterService.addEmployeeToShelter(1,1);
+        shelterService.addEmployeeToShelter(5L,1);
 
         adoptionService.create(animal2.getId(),adopter1.getId());
 
@@ -166,8 +167,8 @@ public class DataLoader implements CommandLineRunner {
     private void updateEmployee() {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setEmail("fake@gmail.org");
-        employeeService.update(1, employeeDTO);
-        Employee employee1Updated = employeeService.getEmployeeById(1);
+        employeeService.update(5L, employeeDTO);
+        Employee employee1Updated = employeeService.getEmployeeById(5L);
         log.info("employee1Updated : {}", employee1Updated.getEmail());
     }
 
@@ -211,13 +212,19 @@ public class DataLoader implements CommandLineRunner {
 
     private void createEmployees() {
         Employee employee = new Employee();
-        employee.setFirstName("ana");
-        employee.setLastName("mendoza");
+        employee.setName("ana mendoza");
+        employee.setUsername("anam");
+        employee.setPassword("1234");
+        employeeService.save(employee);
+        roleService.addRoleToUser("anam", "ROLE_EMPLOYEE");
         employeeService.save(employee);
 
         Employee employee2 = new Employee();
-        employee2.setFirstName("tereza");
-        employee2.setLastName("mendoza");
+        employee2.setName("tereza mendoza");
+        employee2.setUsername("mendt");
+        employee2.setPassword("1234");
+        employeeService.save(employee2);
+        roleService.addRoleToUser("mendt", "ROLE_EMPLOYEE");
         employeeService.save(employee2);
     }
 
@@ -242,6 +249,7 @@ public class DataLoader implements CommandLineRunner {
         roleService.save(new Role("ROLE_ADMIN"));
         roleService.save(new Role("ROLE_VETERINARIAN"));
         roleService.save(new Role("ROLE_ADOPTER"));
+        roleService.save(new Role("ROLE_EMPLOYEE"));
     }
 
     private void createShelters() {
