@@ -77,6 +77,7 @@ public class SecurityConfig {
                 .requestMatchers(POST, "/api/medical-procedures").hasAnyAuthority("ROLE_VETERINARIAN")
                 .requestMatchers(POST, "/api/adoptions").hasAnyAuthority("ROLE_ADOPTER")
                 .requestMatchers(POST, "/api/cats").hasAnyAuthority("ROLE_EMPLOYEE")
+                .requestMatchers(PATCH, "/api/shelters/add-employee").hasAnyAuthority("ROLE_SHELTER")
                 .anyRequest().authenticated()); // any other endpoints require authentication
 
         // add the custom authentication filter to the http security object

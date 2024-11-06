@@ -10,5 +10,5 @@ public class AnimalToShelterDTO {
 
     private Integer animalId;
 
-    private Integer shelterId;
+    private Long shelterId;
 }

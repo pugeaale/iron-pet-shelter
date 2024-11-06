@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ShelterRepository extends JpaRepository<Shelter, Integer> {
+public interface ShelterRepository extends JpaRepository<Shelter, Long> {
     /**
      * Get list of shelter by city
      * @param city the city to search

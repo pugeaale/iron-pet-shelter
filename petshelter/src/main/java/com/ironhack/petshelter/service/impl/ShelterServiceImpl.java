@@ -27,9 +27,9 @@ public class ShelterServiceImpl implements ShelterService {
 
     @Transactional
     @Override
-    public Shelter update(Integer idInteger, ShelterDTO shelterDTO) {
-        log.info("Update Shelter id:{}", idInteger);
-        Shelter shelter = getShelterById(idInteger);
+    public Shelter update(Long id, ShelterDTO shelterDTO) {
+        log.info("Update Shelter id:{}", id);
+        Shelter shelter = getShelterById(id);
         if(shelter == null) return null;
         shelter.setCity(shelterDTO.getCity());
         shelter.setPhoneNumber(shelterDTO.getPhoneNumber());
@@ -57,7 +57,7 @@ public class ShelterServiceImpl implements ShelterService {
     }
 
     @Override
-    public Shelter getShelterById(Integer id) {
+    public Shelter getShelterById(Long id) {
         log.info("Fetching shelter by id {}", id);
         Optional<Shelter> shelter = shelterRepository.findById(id);
         return shelter.orElse(null);
@@ -65,7 +65,7 @@ public class ShelterServiceImpl implements ShelterService {
 
     @Override
     @Transactional
-    public void addAnimalToShelter(Integer animalId, Integer shelterId) {
+    public void addAnimalToShelter(Integer animalId, Long shelterId) {
         Animal animal = animalService.getAnimalById(animalId);
         if( animal == null )
             throw new IllegalArgumentException("Animal not found");
@@ -80,7 +80,7 @@ public class ShelterServiceImpl implements ShelterService {
 
     @Override
     @Transactional
-    public void addEmployeeToShelter(Long employeeId, Integer shelterId) {
+    public void addEmployeeToShelter(Long employeeId, Long shelterId) {
         Employee employee = employeeService.getEmployeeById(employeeId);
         if( employee == null )
             throw new IllegalArgumentException("Employee not found");

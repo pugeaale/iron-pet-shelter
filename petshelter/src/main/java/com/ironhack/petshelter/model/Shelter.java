@@ -11,13 +11,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-public class Shelter {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    private String name;
+public class Shelter extends User {
 
     private String city;
 
