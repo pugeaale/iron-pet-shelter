@@ -3,6 +3,7 @@ package com.ironhack.petshelter.controller;
 import com.ironhack.petshelter.dto.AdopterDTO;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.service.AdopterService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +51,7 @@ public class AdopterController {
      */
     @PostMapping("/adopters")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveAdopter(@RequestBody Adopter adopter) {
-        adopterService.save(adopter);
+    public Adopter saveAdopter(@RequestBody @Valid Adopter adopter) {
+        return adopterService.save(adopter);
     }
 }
