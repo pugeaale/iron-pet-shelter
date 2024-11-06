@@ -273,7 +273,7 @@ public class DataLoader implements CommandLineRunner {
     private void createCats() {
         Cat cat = new Cat();
         cat.setName("Cat1");
-        cat.setBreed("x");
+        cat.setBreed("maine coon");
         catService.save(cat);
 
         Cat cat2 = new Cat();
@@ -284,13 +284,13 @@ public class DataLoader implements CommandLineRunner {
 
     private void createDogs() {
         Dog dog = new Dog();
-        dog.setName("Dog1");
+        dog.setName("Dog");
+        dog.setBreed("berger allemand");
         dogService.save(dog);
 
         Dog dog2 = new Dog();
-        dog2.setName("Dog2");
+        dog2.setName("Maya");
+        dog2.setBreed("american staff");
         dogService.save(dog2);
     }
-
-
 }
