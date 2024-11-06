@@ -12,7 +12,7 @@ public interface EmployeeService {
      * @param employeeDTO the employee datas to update
      * @return the updated employee
      */
-    Employee update(Integer id, EmployeeDTO employeeDTO);
+    Employee update(Long id, EmployeeDTO employeeDTO);
 
     /**
      * This method is used to save a employee entity to the database.
@@ -32,5 +32,5 @@ public interface EmployeeService {
      * @param id the id of the employee to be retrieved
      * @return the retrieved employee
      */
-    Employee getEmployeeById(Integer id);
+    Employee getEmployeeById(Long id);
 }

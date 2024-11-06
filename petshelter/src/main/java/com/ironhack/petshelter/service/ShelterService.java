@@ -52,5 +52,5 @@ public interface ShelterService {
      * @param employeeId the id of the employee to add to the shelter
      * @param shelterId the id of the shelter to add the employee
      */
-    void addEmployeeToShelter(Integer employeeId, Integer shelterId);
+    void addEmployeeToShelter(Long employeeId, Integer shelterId);
 }

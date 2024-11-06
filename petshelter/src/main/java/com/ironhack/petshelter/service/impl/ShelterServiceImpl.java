@@ -80,7 +80,7 @@ public class ShelterServiceImpl implements ShelterService {
 
     @Override
     @Transactional
-    public void addEmployeeToShelter(Integer employeeId, Integer shelterId) {
+    public void addEmployeeToShelter(Long employeeId, Integer shelterId) {
         Employee employee = employeeService.getEmployeeById(employeeId);
         if( employee == null )
             throw new IllegalArgumentException("Employee not found");
