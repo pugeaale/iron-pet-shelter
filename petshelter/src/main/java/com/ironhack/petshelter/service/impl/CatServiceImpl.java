@@ -34,9 +34,9 @@ public class CatServiceImpl implements CatService {
 
     @Transactional
     @Override
-    public Cat update(Integer idInteger, CatDTO catDTO) {
-        log.info("update cat id:{}", idInteger);
-        Optional<Cat> cat = catRepository.findById(idInteger);
+    public Cat update(Integer id, CatDTO catDTO) {
+        log.info("update cat id:{}", id);
+        Optional<Cat> cat = catRepository.findById(id);
         if (cat.isPresent()) {
             cat.get().setBreed(catDTO.getBreed());
             return catRepository.save(cat.get());

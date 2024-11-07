@@ -49,7 +49,7 @@ public class CatController {
     }
 
     @PatchMapping("/cats/{id}")
-    public Cat update(@PathVariable Integer id, @RequestBody CatDTO catDTO) {
+    public Cat update(@PathVariable Integer id, @RequestBody @Valid CatDTO catDTO) {
         return catService.update(id, catDTO);
     }
 }
