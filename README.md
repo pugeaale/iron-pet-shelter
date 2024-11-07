@@ -14,8 +14,31 @@ Finally, shelter employees or volunteers record various activities, such as clea
 
 ## Setup
 
-IntelliJ
-Springboot
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/pugeaale/iron-pet-shelter.git
+
+2. **Configure Database:**
+   ```bash
+    CREATE DATABASE petshelter_db;
+   
+3. **Build the project using Maven:**
+   ```bash
+   mvn clean install
+   ```
+
+4. **Build the project using Maven:**
+   ```bash
+   mvn clean install
+   ```
+
+5. **Run the application:**
+   ```bash
+   mvn spring-boot:run
+   ```
+
+6. **Access the application:**
+   Open a web browser and go to `http://localhost:8080` to view the application.
 
 ## Technology used
 
@@ -25,6 +48,8 @@ Java
 Spring
 JPA
 MySQL
+IntelliJ
+Springboot
 
 ## Controllers and routes structure
 
