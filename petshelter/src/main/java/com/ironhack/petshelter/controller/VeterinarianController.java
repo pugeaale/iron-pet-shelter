@@ -1,10 +1,12 @@
 package com.ironhack.petshelter.controller;
 
 import com.ironhack.petshelter.dto.VeterinarianDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.VeterinarianService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,10 +34,14 @@ public class VeterinarianController {
      * @param id the id of the Veterinarian to be retrieved
      * @return the retrieved Veterinarian
      */
-    @GetMapping("/veterinarians/{id}")
+    @GetMapping("/veterinarians-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Veterinarian getVeterinarianById(@PathVariable Long id) {
-        return veterinarianService.getVeterinarianById(id);
+    public ResponseEntity<Veterinarian> getVeterinarianById(@PathVariable Long id) throws ResourceNotFoundException {
+        Veterinarian user = veterinarianService.getVeterinarianById(id);
+        if(user == null) {
+            throw new ResourceNotFoundException("vet not found on :: " + id);
+        }
+        return ResponseEntity.ok().body(user);
     }
 
     /**
