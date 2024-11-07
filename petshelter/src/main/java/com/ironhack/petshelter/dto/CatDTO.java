@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 /**
@@ -8,5 +9,6 @@ import lombok.Data;
 @Data
 public class CatDTO {
 
+    @NotEmpty(message = "cat breed must be not empty")
     private String breed;
 }
