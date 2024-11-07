@@ -40,7 +40,7 @@ public class EmployeeController {
     }
 
     @PatchMapping("/employees/{id}")
-    public Employee update(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+    public Employee update(@PathVariable Long id, @RequestBody @Valid EmployeeDTO employeeDTO) {
         return employeeService.update(id, employeeDTO);
     }
 
