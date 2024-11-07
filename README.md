@@ -42,14 +42,20 @@ Finally, shelter employees or volunteers record various activities, such as clea
 
 ## Technology used
 
-Git
-Github
-Java
-Spring
-JPA
-MySQL
-IntelliJ
-Springboot
++ Git
++ Github
++ Spring
++ JPA
++ IntelliJ
++ Java
++ Lombok
++ Spring Boot
++ Spring Web
++ Spring Security
++ AWT auth
++ MySQL
++ Maven
++ Hibernate
 
 ## Controllers and routes structure
 
@@ -313,16 +319,21 @@ Get animals by shelter
 
 ## Future work
 
-Frontend
++ Frontend
++ Security
+
 
 ## Extra links
 
-Slides
++ Slides
 
 ## Ressources
 
-Spring boot
-
++ Spring boot
++ Spring security
++ Spring web
++ JPA
++ JAVA
 
 ## Team members
 
