@@ -4,6 +4,7 @@ import com.ironhack.petshelter.dto.VeterinarianDTO;
 import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.service.VeterinarianService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +56,7 @@ public class VeterinarianController {
         return veterinarianService.getVeterinariansByCity(city);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/veterinarians/{id}")
     public Veterinarian update(@PathVariable Long id, @RequestBody VeterinarianDTO updatedVeterinarianDTO) {
         return veterinarianService.update(id, updatedVeterinarianDTO);
     }
@@ -67,7 +68,7 @@ public class VeterinarianController {
      */
     @PostMapping("/veterinarians")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveVeterinarian(@RequestBody Veterinarian veterinarian) {
-        veterinarianService.save(veterinarian);
+    public Veterinarian saveVeterinarian(@RequestBody @Valid Veterinarian veterinarian) {
+        return veterinarianService.save(veterinarian);
     }
 }
