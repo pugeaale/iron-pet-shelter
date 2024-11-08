@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.controller;
 
 import com.ironhack.petshelter.dto.DogDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Dog;
 import com.ironhack.petshelter.service.DogService;
 import jakarta.validation.Valid;
@@ -40,7 +41,7 @@ public class DogController {
     }
 
     @PatchMapping("/dogs/{id}")
-    public Dog update(@PathVariable Integer id, @RequestBody DogDTO dogDTO) {
+    public Dog update(@PathVariable Integer id, @RequestBody DogDTO dogDTO) throws ResourceNotFoundException {
         return dogService.update(id, dogDTO);
     }
 }

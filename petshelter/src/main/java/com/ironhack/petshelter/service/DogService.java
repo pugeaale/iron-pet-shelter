@@ -2,6 +2,7 @@ package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.dto.DogDTO;
 import com.ironhack.petshelter.dto.VeterinarianDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Dog;
 import com.ironhack.petshelter.model.Veterinarian;
 
@@ -27,5 +28,5 @@ public interface DogService {
      * @param dogDTO the Dog datas to update
      * @return the updated Dog
      */
-    Dog update(Integer id, DogDTO dogDTO);
+    Dog update(Integer id, DogDTO dogDTO) throws ResourceNotFoundException;
 }
