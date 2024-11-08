@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.dto.ShelterDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Animal;
 import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.model.Shelter;
@@ -27,13 +28,18 @@ public class ShelterServiceImpl implements ShelterService {
 
     @Transactional
     @Override
-    public Shelter update(Long id, ShelterDTO shelterDTO) {
+    public Shelter update(Long id, ShelterDTO shelterDTO) throws ResourceNotFoundException {
         log.info("Update Shelter id:{}", id);
         Shelter shelter = getShelterById(id);
-        if(shelter == null) return null;
-        shelter.setCity(shelterDTO.getCity());
-        shelter.setPhoneNumber(shelterDTO.getPhoneNumber());
-        shelter.setName(shelterDTO.getName());
+        if(shelter == null) {
+            throw new ResourceNotFoundException("Shelter not found with id:" + id);
+        }
+        Optional<String> city = shelterDTO.getCity();
+        city.ifPresent(shelter::setCity);
+        Optional<String> phoneNumber = shelterDTO.getPhoneNumber();
+        phoneNumber.ifPresent(shelter::setPhoneNumber);
+        Optional<String> name = shelterDTO.getName();
+        name.ifPresent(shelter::setName);
         return shelterRepository.save(shelter);
     }
 

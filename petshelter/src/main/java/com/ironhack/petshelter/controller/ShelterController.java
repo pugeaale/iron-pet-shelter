@@ -22,7 +22,7 @@ public class ShelterController {
     private final ShelterService shelterService;
 
     @PatchMapping("/shelters/{id}")
-    public Shelter update(@PathVariable Long id, @RequestBody ShelterDTO shelterDTO) {
+    public Shelter update(@PathVariable Long id, @RequestBody ShelterDTO shelterDTO) throws ResourceNotFoundException {
         return shelterService.update(id, shelterDTO);
     }
 
