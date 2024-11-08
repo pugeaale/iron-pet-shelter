@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Animal;
 import com.ironhack.petshelter.service.AnimalService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,11 @@ public class AnimalController {
      */
     @GetMapping("/animals/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Animal getAdopterById(@PathVariable Integer id) {
+    public Animal getAdopterById(@PathVariable Integer id) throws ResourceNotFoundException {
+        Animal animal = animalService.getAnimalById(id);
+        if (animal == null) {
+            throw new ResourceNotFoundException("animal not found with id: " + id);
+        }
         return animalService.getAnimalById(id);
     }
 
