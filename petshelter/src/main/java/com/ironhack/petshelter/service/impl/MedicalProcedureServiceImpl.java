@@ -41,7 +41,7 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
 
     @Transactional
     @Override
-    public MedicalProcedure create(Integer animalId, Long veterinarianId) {
+    public MedicalProcedure create(Integer animalId, Long veterinarianId, String description) {
         log.info("Saving new Medical Procedure to the database [animalId:"+animalId+", veterinarianId:"+veterinarianId+"]");
         Animal animal = animalService.getAnimalById(animalId);
         if( animal == null )
@@ -52,6 +52,7 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
         MedicalProcedure medicalProcedure = new MedicalProcedure();
         medicalProcedure.setAnimal(animal);
         medicalProcedure.setVeterinarian(veterinarian);
+        medicalProcedure.setDescription(description);
         animal.getMedicalProcedures().add(medicalProcedure);
         animalService.saveAnimal(animal);
         veterinarian.getMedicalProcedures().add(medicalProcedure);

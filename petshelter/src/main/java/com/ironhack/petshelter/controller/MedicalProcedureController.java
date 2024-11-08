@@ -56,8 +56,8 @@ public class MedicalProcedureController {
      */
     @PostMapping("/medical-procedures")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createMedicalProcedure(@RequestBody Integer animalId, Long veterinarianId) {
-        medicalProcedureService.create(animalId, veterinarianId);
+    public void createMedicalProcedure(@RequestBody Integer animalId, Long veterinarianId, String description) {
+        medicalProcedureService.create(animalId, veterinarianId, description);
     }
 
     /**
@@ -66,7 +66,7 @@ public class MedicalProcedureController {
      * @param id the id of the medical procedure
      */
     @DeleteMapping("/medical-procedures/{id}")
-    public void createMedicalProcedure(@PathVariable Integer id) {
+    public void deleteMedicalProcedure(@PathVariable Integer id) {
         medicalProcedureService.deleteMedicalProcedure(id);
     }
 
