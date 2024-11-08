@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.dto.DogDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Dog;
 import com.ironhack.petshelter.repository.DogRepository;
 import com.ironhack.petshelter.service.DogService;
@@ -34,16 +35,21 @@ public class DogServiceImpl implements DogService {
 
     @Transactional
     @Override
-    public Dog update(Integer idInteger, DogDTO dogDTO) {
+    public Dog update(Integer idInteger, DogDTO dogDTO) throws ResourceNotFoundException {
         log.info("update dog id:{}", idInteger);
         Optional<Dog> dog = dogRepository.findById(idInteger);
-        if (dog.isPresent()) {
-            dog.get().setOkDog(dogDTO.getOkDog());
-            dog.get().setOkCat(dogDTO.getOkCat());
-            dog.get().setOkChild(dogDTO.getOkChild());
-            return dogRepository.save(dog.get());
-        } else {
-            return null;
+        if (dog.isEmpty()) {
+            throw new ResourceNotFoundException("dog not found with id " + idInteger);
         }
+        if( dogDTO.getOkDog().isPresent()) {
+            dog.get().setOkDog(dogDTO.getOkDog().get());
+        }
+        if(dogDTO.getOkCat().isPresent()) {
+            dog.get().setOkCat(dogDTO.getOkCat().get());
+        }
+        if(dogDTO.getOkChild().isPresent()) {
+            dog.get().setOkChild(dogDTO.getOkChild().get());
+        }
+        return dogRepository.save(dog.get());
     }
 }
