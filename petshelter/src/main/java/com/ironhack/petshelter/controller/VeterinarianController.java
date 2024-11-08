@@ -38,11 +38,11 @@ public class VeterinarianController {
     @GetMapping("/veterinarians-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Veterinarian> getVeterinarianById(@PathVariable Long id) throws ResourceNotFoundException {
-        Veterinarian user = veterinarianService.getVeterinarianById(id);
-        if(user == null) {
-            throw new ResourceNotFoundException("vet not found on :: " + id);
+        Veterinarian veterinarian = veterinarianService.getVeterinarianById(id);
+        if(veterinarian == null) {
+            throw new ResourceNotFoundException("veterinarian not found with id: " + id);
         }
-        return ResponseEntity.ok().body(user);
+        return ResponseEntity.ok().body(veterinarian);
     }
 
     /**
