@@ -1,12 +1,12 @@
 package com.ironhack.petshelter.controller;
 
-import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.model.Adoption;
 import com.ironhack.petshelter.service.AdoptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -24,8 +24,8 @@ public class AdoptionController {
      */
     @PostMapping("/adoptions")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveAdoption(@RequestBody Integer animalId, Long adopterId) {
-        adoptionService.create(animalId, adopterId);
+    public Adoption saveAdoption(@RequestBody Integer animalId, Long adopterId, LocalDate date) {
+        return adoptionService.create(animalId, adopterId, date);
     }
 
     /**

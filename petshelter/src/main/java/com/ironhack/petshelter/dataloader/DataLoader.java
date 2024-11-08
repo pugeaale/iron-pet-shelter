@@ -43,7 +43,7 @@ public class DataLoader implements CommandLineRunner {
 
         shelterService.addEmployeeToShelter(5L,7L);
 
-        adoptionService.create(2,3L);
+        adoptionService.create(2,3L, LocalDate.now());
 
         createMedicalProcedures();
 
