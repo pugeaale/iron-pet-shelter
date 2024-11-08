@@ -2,6 +2,7 @@ package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.dto.AdopterDTO;
 import com.ironhack.petshelter.dto.VeterinarianDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.model.Veterinarian;
 
@@ -15,7 +16,7 @@ public interface AdopterService {
      * @param adopterDTO the Adopter datas to update
      * @return the updated Adopter
      */
-    Adopter update(Long id, AdopterDTO adopterDTO);
+    Adopter update(Long id, AdopterDTO adopterDTO) throws ResourceNotFoundException;
 
     /**
      * This method is used to save a adopter entity to the database.

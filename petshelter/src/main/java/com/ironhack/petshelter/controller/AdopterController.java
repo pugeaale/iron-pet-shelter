@@ -46,7 +46,7 @@ public class AdopterController {
     }
 
     @PatchMapping("/adopters/{id}")
-    public Adopter update(@PathVariable Long id, @RequestBody AdopterDTO adopterDTO) {
+    public Adopter update(@PathVariable Long id, @RequestBody AdopterDTO adopterDTO) throws ResourceNotFoundException {
         return adopterService.update(id, adopterDTO);
     }
 
