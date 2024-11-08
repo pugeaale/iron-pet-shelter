@@ -57,7 +57,7 @@ public class VeterinarianController {
     }
 
     @PatchMapping("/veterinarians/{id}")
-    public Veterinarian update(@PathVariable Long id, @RequestBody VeterinarianDTO updatedVeterinarianDTO) {
+    public Veterinarian update(@PathVariable Long id, @RequestBody VeterinarianDTO updatedVeterinarianDTO) throws ResourceNotFoundException {
         return veterinarianService.update(id, updatedVeterinarianDTO);
     }
 

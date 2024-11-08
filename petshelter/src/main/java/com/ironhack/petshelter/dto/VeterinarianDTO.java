@@ -2,13 +2,15 @@ package com.ironhack.petshelter.dto;
 
 import lombok.Data;
 
+import java.util.Optional;
+
 /**
  * Data transfer object for passing information for update a vet
  */
 @Data
 public class VeterinarianDTO {
 
-    private String city;
+    private Optional<String> city = Optional.empty();;
 
-    private String phoneNumber;
+    private Optional<String> phoneNumber = Optional.empty();;
 }

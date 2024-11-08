@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.dto.VeterinarianDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Veterinarian;
 import com.ironhack.petshelter.repository.VeterinarianRepository;
 import com.ironhack.petshelter.service.VeterinarianService;
@@ -21,12 +22,16 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     @Transactional
     @Override
-    public Veterinarian update(Long vetId, VeterinarianDTO veterinarianDTO) {
+    public Veterinarian update(Long vetId, VeterinarianDTO veterinarianDTO) throws ResourceNotFoundException {
         log.info("update veterinarian id:{}", vetId);
         Veterinarian veterinarian = getVeterinarianById(vetId);
-        if(veterinarian == null) return null;
-        veterinarian.setCity(veterinarianDTO.getCity());
-        veterinarian.setPhoneNumber(veterinarianDTO.getPhoneNumber());
+        if(veterinarian == null) {
+            throw new ResourceNotFoundException("veterinarian not found with id:" + vetId);
+        }
+        Optional<String> city = veterinarianDTO.getCity();
+        city.ifPresent(veterinarian::setCity);
+        Optional<String> phoneNumber = veterinarianDTO.getPhoneNumber();
+        phoneNumber.ifPresent(veterinarian::setPhoneNumber);
         return veterinarianRepository.save(veterinarian);
     }
 
