@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.controller;
 
 import com.ironhack.petshelter.dto.CatDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Cat;
 import com.ironhack.petshelter.model.User;
 import com.ironhack.petshelter.service.CatService;
@@ -49,7 +50,7 @@ public class CatController {
     }
 
     @PatchMapping("/cats/{id}")
-    public Cat update(@PathVariable Integer id, @RequestBody @Valid CatDTO catDTO) {
+    public Cat update(@PathVariable Integer id, @RequestBody @Valid CatDTO catDTO) throws ResourceNotFoundException {
         return catService.update(id, catDTO);
     }
 }

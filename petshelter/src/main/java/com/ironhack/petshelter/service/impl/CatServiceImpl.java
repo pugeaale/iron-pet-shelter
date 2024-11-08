@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.dto.CatDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Cat;
 import com.ironhack.petshelter.repository.CatRepository;
 import com.ironhack.petshelter.service.CatService;
@@ -34,14 +35,13 @@ public class CatServiceImpl implements CatService {
 
     @Transactional
     @Override
-    public Cat update(Integer id, CatDTO catDTO) {
+    public Cat update(Integer id, CatDTO catDTO) throws ResourceNotFoundException {
         log.info("update cat id:{}", id);
         Optional<Cat> cat = catRepository.findById(id);
-        if (cat.isPresent()) {
-            cat.get().setBreed(catDTO.getBreed());
-            return catRepository.save(cat.get());
-        } else {
-            return null;
+        if (cat.isEmpty()) {
+            throw new ResourceNotFoundException("cat not found with id " + id);
         }
+        cat.get().setBreed(catDTO.getBreed());
+        return catRepository.save(cat.get());
     }
 }
