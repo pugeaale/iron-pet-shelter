@@ -23,9 +23,11 @@ public class Animal {
 
     @ManyToOne
     @JoinColumn(name = "shelterId")
+    @JsonIgnore
     private Shelter shelter;
 
     @OneToOne(mappedBy = "animal")
+    @JsonIgnore
     private Adoption adoption;
 
     @OneToMany(mappedBy = "animal")
