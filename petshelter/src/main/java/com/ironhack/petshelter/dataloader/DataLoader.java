@@ -186,6 +186,7 @@ public class DataLoader implements CommandLineRunner {
         Veterinarian veterinarian = new Veterinarian();
         veterinarian.setName("gregory house");
         veterinarian.setCity("paris");
+        veterinarian.setPhoneNumber("0123456789");
         veterinarian.setUsername("ghouse");
         veterinarian.setPassword("1234");
         veterinarianService.save(veterinarian);
@@ -194,6 +195,7 @@ public class DataLoader implements CommandLineRunner {
         Veterinarian veterinarian2 = new Veterinarian();
         veterinarian2.setName("hugo house");
         veterinarian2.setCity("lyon");
+        veterinarian2.setPhoneNumber("0123456799");
         veterinarian2.setUsername("hhouse");
         veterinarian2.setPassword("1234");
         veterinarianService.save(veterinarian2);
