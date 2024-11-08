@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.dto.EmployeeDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.repository.EmployeeRepository;
 import com.ironhack.petshelter.service.EmployeeService;
@@ -21,10 +22,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override
-    public Employee update(Long id, EmployeeDTO employeeDTO) {
+    public Employee update(Long id, EmployeeDTO employeeDTO) throws ResourceNotFoundException {
         log.info("employee update id:{}", id);
         Employee employee = getEmployeeById(id);
-        if(employee == null) return null;
+        if(employee == null) {
+            throw new ResourceNotFoundException("employee not found with id " + id);
+        }
         employee.setEmail(employeeDTO.getEmail());
         return employeeRepository.save(employee);
     }

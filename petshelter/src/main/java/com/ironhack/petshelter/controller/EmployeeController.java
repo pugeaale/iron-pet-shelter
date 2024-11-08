@@ -46,7 +46,7 @@ public class EmployeeController {
     }
 
     @PatchMapping("/employees/{id}")
-    public Employee update(@PathVariable Long id, @RequestBody @Valid EmployeeDTO employeeDTO) {
+    public Employee update(@PathVariable Long id, @RequestBody @Valid EmployeeDTO employeeDTO) throws ResourceNotFoundException {
         return employeeService.update(id, employeeDTO);
     }
 

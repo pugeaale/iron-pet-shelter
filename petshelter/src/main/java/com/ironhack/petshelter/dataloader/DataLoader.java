@@ -30,13 +30,13 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         createRoles();
+
         createVeterinarians();
         createAdopters();
         createEmployees();
         createShelters();
 
         createDogs();
-
         createCats();
 
         shelterService.addAnimalToShelter(1,7L);
@@ -71,7 +71,7 @@ public class DataLoader implements CommandLineRunner {
         veterinarian.setUsername(username);
         veterinarian.setPassword("1234");
         veterinarianService.save(veterinarian);
-        roleService.addRoleToUser("ghouse", "ROLE_VETERINARIAN");
+        roleService.addRoleToUser(username, "ROLE_VETERINARIAN");
     }
 
     private void createUsers() {
@@ -103,7 +103,6 @@ public class DataLoader implements CommandLineRunner {
 
     private void createAdopters() {
         createAdopter("brigitte bardot", "bardo", "eee");
-
         createAdopter("angela guzman", "aguz", "dddddd");
     }
 
@@ -143,7 +142,6 @@ public class DataLoader implements CommandLineRunner {
 
     private void createCats() {
         createCar("Cat1", "maine coon");
-
         createCar("cat2", "siamois");
     }
 
@@ -156,7 +154,6 @@ public class DataLoader implements CommandLineRunner {
 
     private void createDogs() {
         createDog("Dog", "berger allemand");
-
         createDog("Maya", "american staff");
     }
 
