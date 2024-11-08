@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.dto.VeterinarianDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Veterinarian;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface VeterinarianService {
      * @param veterinarianDTO the veterinarian datas to update
      * @return the updated veterinarian
      */
-    Veterinarian update(Long id, VeterinarianDTO veterinarianDTO);
+    Veterinarian update(Long id, VeterinarianDTO veterinarianDTO) throws ResourceNotFoundException;
 
     /**
      * This method is used to save a veterinarian entity to the database.
