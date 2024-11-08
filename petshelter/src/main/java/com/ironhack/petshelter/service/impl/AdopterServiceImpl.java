@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service.impl;
 
 import com.ironhack.petshelter.dto.AdopterDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.repository.AdopterRepository;
 import com.ironhack.petshelter.service.AdopterService;
@@ -21,12 +22,18 @@ public class AdopterServiceImpl implements AdopterService {
 
     @Transactional
     @Override
-    public Adopter update(Long idInteger, AdopterDTO adopterDTO) {
+    public Adopter update(Long idInteger, AdopterDTO adopterDTO) throws ResourceNotFoundException {
         log.info("update adopter id:{}", idInteger);
         Adopter adopter = getAdopterById(idInteger);
-        if(adopter == null) return null;
-        adopter.setEmail(adopterDTO.getEmail());
-        adopter.setPhoneNumber(adopterDTO.getPhoneNumber());
+        if(adopter == null) {
+            throw new ResourceNotFoundException("adopter not found with id " + idInteger);
+        }
+        if(adopterDTO.getPhoneNumber().isPresent()) {
+            adopter.setPhoneNumber(adopterDTO.getPhoneNumber().get());
+        }
+        if(adopterDTO.getEmail().isPresent()) {
+            adopter.setEmail(adopterDTO.getEmail().get());
+        }
         return adopterRepository.save(adopter);
     }
 
