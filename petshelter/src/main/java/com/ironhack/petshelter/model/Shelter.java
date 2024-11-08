@@ -2,6 +2,7 @@ package com.ironhack.petshelter.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Shelter extends User {
 
+    @NotEmpty
     private String city;
 
     @Pattern(regexp = "^\\+?[0-9 .\\-()]{7,15}$", message = "shelter phone number is invalid")

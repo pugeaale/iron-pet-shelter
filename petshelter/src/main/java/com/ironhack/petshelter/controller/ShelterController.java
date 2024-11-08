@@ -3,11 +3,13 @@ package com.ironhack.petshelter.controller;
 import com.ironhack.petshelter.dto.AnimalToShelterDTO;
 import com.ironhack.petshelter.dto.EmployeeToShelterDTO;
 import com.ironhack.petshelter.dto.ShelterDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Shelter;
 import com.ironhack.petshelter.service.ShelterService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,8 +55,12 @@ public class ShelterController {
      */
     @GetMapping("/shelters/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Shelter getShelterById(@PathVariable Long id) {
-        return shelterService.getShelterById(id);
+    public ResponseEntity<Shelter> getShelterById(@PathVariable Long id) throws ResourceNotFoundException {
+        Shelter shelter = shelterService.getShelterById(id);
+        if(shelter == null) {
+            throw new ResourceNotFoundException("shelter not found with id: " + id);
+        }
+        return ResponseEntity.ok().body(shelter);
     }
 
     /**
