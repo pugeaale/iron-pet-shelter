@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.dto.EmployeeDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Employee;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface EmployeeService {
      * @param employeeDTO the employee datas to update
      * @return the updated employee
      */
-    Employee update(Long id, EmployeeDTO employeeDTO);
+    Employee update(Long id, EmployeeDTO employeeDTO) throws ResourceNotFoundException;
 
     /**
      * This method is used to save a employee entity to the database.
