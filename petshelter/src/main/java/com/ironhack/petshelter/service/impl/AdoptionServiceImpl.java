@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -31,7 +32,7 @@ public class AdoptionServiceImpl implements AdoptionService {
 
     @Transactional
     @Override
-    public Adoption create(Integer animalId, Long adopterId) {
+    public Adoption create(Integer animalId, Long adopterId, LocalDate date) {
         log.info("Saving new Adoption to the database [animalId:"+animalId+", adopterId:"+adopterId+"]");
         Animal animal = animalService.getAnimalById(animalId);
         if( animal == null )
@@ -40,6 +41,7 @@ public class AdoptionServiceImpl implements AdoptionService {
         if( adopter == null )
             return null;
         Adoption adoption = new Adoption();
+        adoption.setDate(date);
         adoption.setAnimal(animal);
         adoption.setAdopter(adopter);
         return adoptionRepository.save(adoption);
