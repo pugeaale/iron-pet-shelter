@@ -1,11 +1,13 @@
 package com.ironhack.petshelter.controller;
 
 import com.ironhack.petshelter.dto.AdopterDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.service.AdopterService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +26,12 @@ public class AdopterController {
      */
     @GetMapping("/adopters/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Adopter getAdopterById(@PathVariable Long id) {
-        return adopterService.getAdopterById(id);
+    public ResponseEntity<Adopter> getAdopterById(@PathVariable Long id) throws ResourceNotFoundException {
+        Adopter adopter = adopterService.getAdopterById(id);
+        if (adopter == null) {
+            throw new ResourceNotFoundException("adopter not found with id: " + id);
+        }
+        return ResponseEntity.ok().body(adopter);
     }
 
     /**

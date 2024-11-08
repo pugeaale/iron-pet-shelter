@@ -5,6 +5,7 @@ import com.ironhack.petshelter.model.Animal;
 import com.ironhack.petshelter.service.AnimalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +25,12 @@ public class AnimalController {
      */
     @GetMapping("/animals/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Animal getAdopterById(@PathVariable Integer id) throws ResourceNotFoundException {
+    public ResponseEntity<Animal> getAdopterById(@PathVariable Integer id) throws ResourceNotFoundException {
         Animal animal = animalService.getAnimalById(id);
         if (animal == null) {
             throw new ResourceNotFoundException("animal not found with id: " + id);
         }
-        return animalService.getAnimalById(id);
+        return ResponseEntity.ok().body(animal);
     }
 
     /**

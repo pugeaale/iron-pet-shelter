@@ -237,6 +237,7 @@ public class DataLoader implements CommandLineRunner {
         Adopter adopter = new Adopter();
         adopter.setName("brigitte bardot");
         adopter.setUsername("bardo");
+        adopter.setPhoneNumber("eee");
         adopter.setPassword("1234");
         adopterService.save(adopter);
         roleService.addRoleToUser("bardo", "ROLE_ADOPTER");
@@ -244,6 +245,7 @@ public class DataLoader implements CommandLineRunner {
         Adopter adopter2 = new Adopter();
         adopter2.setName("angela guzman");
         adopter2.setUsername("aguz");
+        adopter2.setPhoneNumber("dddddd");
         adopter2.setPassword("1234");
         adopterService.save(adopter2);
         roleService.addRoleToUser("aguz", "ROLE_ADOPTER");
