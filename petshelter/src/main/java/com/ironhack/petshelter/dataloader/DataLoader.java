@@ -53,9 +53,9 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createMedicalProcedures() {
-        medicalProcedureService.create(2, 1L);
-        medicalProcedureService.create(1, 1L);
-        medicalProcedureService.create(2, 2L);
+        medicalProcedureService.create(2, 1L, "vaccin 1");
+        medicalProcedureService.create(1, 1L, "vaccin 2");
+        medicalProcedureService.create(2, 2L, "vaccin 3");
         List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
         log.info("medicalProcedures found : {}", medicalProcedures.size());
     }

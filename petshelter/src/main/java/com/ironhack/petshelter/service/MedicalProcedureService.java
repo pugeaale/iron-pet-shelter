@@ -30,11 +30,13 @@ public interface MedicalProcedureService {
 
     /**
      * This method is used to save a medical procedure entity to the database.
-     * @param animalId the animal id
+     *
+     * @param animalId       the animal id
      * @param veterinarianId the veterinarian id
+     * @param description
      * @return the saved medical procedure
      */
-    MedicalProcedure create(Integer animalId, Long veterinarianId);
+    MedicalProcedure create(Integer animalId, Long veterinarianId, String description);
 
     /**
      * Delete medical procedure by id
