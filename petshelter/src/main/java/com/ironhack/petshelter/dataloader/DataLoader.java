@@ -1,6 +1,5 @@
 package com.ironhack.petshelter.dataloader;
 
-import com.ironhack.petshelter.dto.*;
 import com.ironhack.petshelter.model.*;
 import com.ironhack.petshelter.service.*;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -41,83 +39,13 @@ public class DataLoader implements CommandLineRunner {
 
         createCats();
 
-        List<Animal> animals = animalService.getAnimals();
-        log.info("animals found : {}", animals.size());
-
-        List<Dog> dogs = dogService.getDogs();
-        log.info("dogs found : {}", dogs.size());
-
-        List<Cat> cats = catService.getCats();
-        log.info("cats found : {}", cats.size());
-
-        List<Shelter> shelters = shelterService.getShelters();
-        log.info("shelters found : {}", shelters.size());
-
-        Shelter shelter1 = shelterService.getShelterById(7L);
-        log.info("shelter1 found : {}", shelter1.getName());
-
-
-
-
-
-
-
-        Employee employee1 = employeeService.getEmployeeById(5L);
-        log.info("employee1 found : {}", employee1.getName());
-
-        Adopter adopter1 = adopterService.getAdopterById(3L);
-        log.info("adopter1 found : {}", adopter1.getName());
-
-        List<Adopter> adopters = adopterService.getAdopters();
-        log.info("adopters found : {}", adopters.size());
-
-        List<Employee> employees = employeeService.getEmployees();
-        log.info("employees found : {}", employees.size());
-
-        List<Veterinarian> veterinarians = veterinarianService.getVeterinarians();
-        log.info("veterinarians found : {}", veterinarians.size());
-
-        Veterinarian veterinarian1 = veterinarianService.getVeterinarianById(1L);
-        log.info("veterinarian1 found : {}", veterinarian1.getName());
-
-        Animal animal2 = animalService.getAnimalById(2);
-        log.info("animal2 found : {}", animal2.getName());
-
         shelterService.addAnimalToShelter(1,7L);
 
         shelterService.addEmployeeToShelter(5L,7L);
 
-        adoptionService.create(animal2.getId(),adopter1.getId());
-
-        List<Adoption> adoptions = adoptionService.getAdoptions();
-        log.info("adoptions found : {}", adoptions.size());
+        adoptionService.create(2,3L);
 
         createMedicalProcedures();
-
-        List<Veterinarian> veterinariansByCity = veterinarianService.getVeterinariansByCity("paris");
-        log.info("veterinarians found : {}", veterinariansByCity.size());
-
-        List<Shelter> sheltersByCity = shelterService.getSheltersByCity("paris");
-        log.info("shelters found : {}", sheltersByCity.size());
-
-        List<Animal> animalsByShelter = animalService.getAnimalsByShelterId(1);
-        log.info("animals found : {}", animalsByShelter.size());
-
-        List<MedicalProcedure> proceduresByAnimal = medicalProcedureService.getMedicalProceduresByAnimal(2);
-        log.info("proceduresByAnimal found : {}", proceduresByAnimal.size());
-
-        List<MedicalProcedure> proceduresByVet = medicalProcedureService.getMedicalProceduresByVeterinarian(1L);
-        log.info("proceduresByVet found : {}", proceduresByVet.size());
-
-        updateVeterinarian();
-
-        updateEmployee();
-
-        updateShelter();
-
-        updateAdopter();
-
-        updateDog();
 
         createUsers();
 
@@ -136,50 +64,6 @@ public class DataLoader implements CommandLineRunner {
         medicalProcedureService.deleteMedicalProcedure(1);
         List<MedicalProcedure> medicalProcedures2 = medicalProcedureService.getMedicalProcedures();
         log.info("medicalProcedures found : {}", medicalProcedures2.size());
-    }
-
-    private void updateShelter() {
-        ShelterDTO shelterDTO = new ShelterDTO();
-        shelterDTO.setCity("lisboa");
-        shelterDTO.setPhoneNumber("9876543210");
-        shelterDTO.setName("best shelter ever");
-        shelterService.update(7L, shelterDTO);
-        Shelter shelter1Updated = shelterService.getShelterById(7L);
-        log.info(MessageFormat.format("shelter1Updated : '{}'{0} - {1} -{2}", shelter1Updated.getCity(), shelter1Updated.getPhoneNumber(), shelter1Updated.getName()));
-    }
-
-    private void updateDog() {
-        DogDTO dogDTO = new DogDTO();
-        dogDTO.setOkDog(true);
-        dogDTO.setOkCat(true);
-        dogDTO.setOkChild(true);
-        Dog dogUpdated = dogService.update(1, dogDTO);
-        log.info("dogUpdated : {}", dogUpdated.getOkDog());
-    }
-
-    private void updateAdopter() {
-        AdopterDTO adopterDTO = new AdopterDTO();
-        adopterDTO.setEmail("email@outlook.org");
-        adopterDTO.setPhoneNumber("+33777888999");
-        Adopter adopter1Updated = adopterService.update(3L, adopterDTO);
-        log.info("adopter1Updated : {}", adopter1Updated.getEmail() + "-" + adopter1Updated.getPhoneNumber());
-    }
-
-    private void updateEmployee() {
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setEmail("fake@gmail.org");
-        employeeService.update(5L, employeeDTO);
-        Employee employee1Updated = employeeService.getEmployeeById(5L);
-        log.info("employee1Updated : {}", employee1Updated.getEmail());
-    }
-
-    private void updateVeterinarian() {
-        VeterinarianDTO veterinarianDTO = new VeterinarianDTO();
-        veterinarianDTO.setCity("marseille");
-        veterinarianDTO.setPhoneNumber("1231231231");
-        veterinarianService.update(2L, veterinarianDTO);
-        Veterinarian veterinarian2updated = veterinarianService.getVeterinarianById(2L);
-        log.info("veterinarian2updated : {}", veterinarian2updated.getCity() + " - "  + veterinarian2updated.getPhoneNumber());
     }
 
     private void createVeterinarians() {
