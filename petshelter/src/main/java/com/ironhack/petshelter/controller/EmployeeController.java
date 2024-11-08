@@ -1,11 +1,13 @@
 package com.ironhack.petshelter.controller;
 
 import com.ironhack.petshelter.dto.EmployeeDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Employee;
 import com.ironhack.petshelter.service.EmployeeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,8 +37,12 @@ public class EmployeeController {
      */
     @GetMapping("/employees/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Employee getEmployeeById(@PathVariable Long id) {
-        return employeeService.getEmployeeById(id);
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) throws ResourceNotFoundException {
+        Employee employee = employeeService.getEmployeeById(id);
+        if (employee == null) {
+            throw new ResourceNotFoundException("employee not found with id: " + id);
+        }
+        return ResponseEntity.ok().body(employee);
     }
 
     @PatchMapping("/employees/{id}")

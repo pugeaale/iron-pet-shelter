@@ -217,6 +217,7 @@ public class DataLoader implements CommandLineRunner {
         Employee employee = new Employee();
         employee.setName("ana mendoza");
         employee.setUsername("anam");
+        employee.setEmail("aze");
         employee.setPassword("{noop}1234");
         employee.setDateOfBirth(LocalDate.of(2000,1,1));
         employeeService.save(employee);
@@ -225,6 +226,7 @@ public class DataLoader implements CommandLineRunner {
         Employee employee2 = new Employee();
         employee2.setName("tereza mendoza");
         employee2.setUsername("mendt");
+        employee2.setEmail("tereza");
         employee2.setPassword("{noop}1234");
         employee2.setDateOfBirth(LocalDate.of(1989,1,1));
         employeeService.save(employee2);
