@@ -48,8 +48,6 @@ public class DataLoader implements CommandLineRunner {
         createMedicalProcedures();
 
         createUsers();
-
-        deleteMedicalProcedure();
     }
 
     private void createMedicalProcedures() {
@@ -60,30 +58,20 @@ public class DataLoader implements CommandLineRunner {
         log.info("medicalProcedures found : {}", medicalProcedures.size());
     }
 
-    private void deleteMedicalProcedure() {
-        medicalProcedureService.deleteMedicalProcedure(1);
-        List<MedicalProcedure> medicalProcedures2 = medicalProcedureService.getMedicalProcedures();
-        log.info("medicalProcedures found : {}", medicalProcedures2.size());
+    private void createVeterinarians() {
+        createVet("hugo house", "lyon", "0123456799", "hhouse");
+        createVet("gregory house", "paris", "0123456789", "ghouse");
     }
 
-    private void createVeterinarians() {
+    private void createVet(String name, String city, String number, String username) {
         Veterinarian veterinarian = new Veterinarian();
-        veterinarian.setName("gregory house");
-        veterinarian.setCity("paris");
-        veterinarian.setPhoneNumber("0123456789");
-        veterinarian.setUsername("ghouse");
+        veterinarian.setName(name);
+        veterinarian.setCity(city);
+        veterinarian.setPhoneNumber(number);
+        veterinarian.setUsername(username);
         veterinarian.setPassword("1234");
         veterinarianService.save(veterinarian);
         roleService.addRoleToUser("ghouse", "ROLE_VETERINARIAN");
-
-        Veterinarian veterinarian2 = new Veterinarian();
-        veterinarian2.setName("hugo house");
-        veterinarian2.setCity("lyon");
-        veterinarian2.setPhoneNumber("0123456799");
-        veterinarian2.setUsername("hhouse");
-        veterinarian2.setPassword("1234");
-        veterinarianService.save(veterinarian2);
-        roleService.addRoleToUser("hhouse", "ROLE_VETERINARIAN");
     }
 
     private void createUsers() {
@@ -98,41 +86,35 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createEmployees() {
+        createEmployee("naa men", "anam", "aze");
+        createEmployee("tereza men", "mendt", "tereza");
+    }
+
+    private void createEmployee(String name, String username, String email) {
         Employee employee = new Employee();
-        employee.setName("ana mendoza");
-        employee.setUsername("anam");
-        employee.setEmail("aze");
+        employee.setName(name);
+        employee.setUsername(username);
+        employee.setEmail(email);
         employee.setPassword("{noop}1234");
         employee.setDateOfBirth(LocalDate.of(2000,1,1));
         employeeService.save(employee);
-        roleService.addRoleToUser("anam", "ROLE_EMPLOYEE");
-
-        Employee employee2 = new Employee();
-        employee2.setName("tereza mendoza");
-        employee2.setUsername("mendt");
-        employee2.setEmail("tereza");
-        employee2.setPassword("{noop}1234");
-        employee2.setDateOfBirth(LocalDate.of(1989,1,1));
-        employeeService.save(employee2);
-        roleService.addRoleToUser("mendt", "ROLE_EMPLOYEE");
+        roleService.addRoleToUser(username, "ROLE_EMPLOYEE");
     }
 
     private void createAdopters() {
+        createAdopter("brigitte bardot", "bardo", "eee");
+
+        createAdopter("angela guzman", "aguz", "dddddd");
+    }
+
+    private void createAdopter(String name, String username, String phone) {
         Adopter adopter = new Adopter();
-        adopter.setName("brigitte bardot");
-        adopter.setUsername("bardo");
-        adopter.setPhoneNumber("eee");
+        adopter.setName(name);
+        adopter.setUsername(username);
+        adopter.setPhoneNumber(phone);
         adopter.setPassword("1234");
         adopterService.save(adopter);
-        roleService.addRoleToUser("bardo", "ROLE_ADOPTER");
-
-        Adopter adopter2 = new Adopter();
-        adopter2.setName("angela guzman");
-        adopter2.setUsername("aguz");
-        adopter2.setPhoneNumber("dddddd");
-        adopter2.setPassword("1234");
-        adopterService.save(adopter2);
-        roleService.addRoleToUser("aguz", "ROLE_ADOPTER");
+        roleService.addRoleToUser(username, "ROLE_ADOPTER");
     }
 
     private void createRoles() {
@@ -145,43 +127,43 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createShelters() {
+        createShelter("Shelter1", "paris", "shelter");
+        createShelter("shelter2", "lyon", "shel2");
+    }
+
+    private void createShelter(String name, String city, String username) {
         Shelter shelter = new Shelter();
-        shelter.setName("Shelter1");
-        shelter.setCity("paris");
-        shelter.setUsername("shelter");
+        shelter.setName(name);
+        shelter.setCity(city);
+        shelter.setUsername(username);
         shelter.setPassword("1234");
         shelterService.save(shelter);
-        roleService.addRoleToUser("shelter", "ROLE_SHELTER");
-        Shelter shelter2 = new Shelter();
-        shelter2.setName("shelter2");
-        shelter2.setCity("lyon");
-        shelter2.setUsername("shel2");
-        shelter2.setPassword("1234");
-        shelterService.save(shelter2);
-        roleService.addRoleToUser("shel2", "ROLE_SHELTER");
+        roleService.addRoleToUser(shelter.getUsername(), "ROLE_SHELTER");
     }
 
     private void createCats() {
-        Cat cat = new Cat();
-        cat.setName("Cat1");
-        cat.setBreed("maine coon");
-        catService.save(cat);
+        createCar("Cat1", "maine coon");
 
-        Cat cat2 = new Cat();
-        cat2.setName("cat2");
-        cat2.setBreed("siamois");
-        catService.save(cat2);
+        createCar("cat2", "siamois");
+    }
+
+    private void createCar(String name, String breed) {
+        Cat cat = new Cat();
+        cat.setName(name);
+        cat.setBreed(breed);
+        catService.save(cat);
     }
 
     private void createDogs() {
-        Dog dog = new Dog();
-        dog.setName("Dog");
-        dog.setBreed("berger allemand");
-        dogService.save(dog);
+        createDog("Dog", "berger allemand");
 
-        Dog dog2 = new Dog();
-        dog2.setName("Maya");
-        dog2.setBreed("american staff");
-        dogService.save(dog2);
+        createDog("Maya", "american staff");
+    }
+
+    private void createDog(String name, String breed) {
+        Dog dog = new Dog();
+        dog.setName(name);
+        dog.setBreed(breed);
+        dogService.save(dog);
     }
 }
