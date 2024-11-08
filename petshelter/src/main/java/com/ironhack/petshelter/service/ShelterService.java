@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.dto.ShelterDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Shelter;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface ShelterService {
      * @param shelterDTO the Shelter datas to update
      * @return the updated Shelter
      */
-    Shelter update(Long id, ShelterDTO shelterDTO);
+    Shelter update(Long id, ShelterDTO shelterDTO) throws ResourceNotFoundException;
 
     /**
      * This method is used to save a Shelter entity to the database.
