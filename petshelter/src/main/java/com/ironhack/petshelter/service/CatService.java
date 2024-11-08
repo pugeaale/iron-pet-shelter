@@ -1,6 +1,7 @@
 package com.ironhack.petshelter.service;
 
 import com.ironhack.petshelter.dto.CatDTO;
+import com.ironhack.petshelter.exception.ResourceNotFoundException;
 import com.ironhack.petshelter.model.Cat;
 
 import java.util.List;
@@ -26,5 +27,5 @@ public interface CatService {
      * @param catDTO the cat datas to update
      * @return the updated cat
      */
-    Cat update(Integer id, CatDTO catDTO);
+    Cat update(Integer id, CatDTO catDTO) throws ResourceNotFoundException;
 }
