@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.service;
 
+import com.ironhack.petshelter.dto.MedicalProcedureDTO;
 import com.ironhack.petshelter.model.MedicalProcedure;
 
 import java.util.List;
@@ -31,12 +32,9 @@ public interface MedicalProcedureService {
     /**
      * This method is used to save a medical procedure entity to the database.
      *
-     * @param animalId       the animal id
-     * @param veterinarianId the veterinarian id
-     * @param description
      * @return the saved medical procedure
      */
-    MedicalProcedure create(Integer animalId, Long veterinarianId, String description);
+    MedicalProcedure create(MedicalProcedureDTO medicalProcedureDTO);
 
     /**
      * Delete medical procedure by id

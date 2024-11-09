@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.dataloader;
 
+import com.ironhack.petshelter.dto.MedicalProcedureDTO;
 import com.ironhack.petshelter.model.*;
 import com.ironhack.petshelter.service.*;
 import lombok.RequiredArgsConstructor;
@@ -62,9 +63,11 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createMedicalProcedures() {
-        medicalProcedureService.create(2, 1L, "vaccinnation");
-        medicalProcedureService.create(1, 1L, "microchipping");
-        medicalProcedureService.create(2, 2L, "parasite treatment");
+        MedicalProcedureDTO medicalProcedureDTO = new MedicalProcedureDTO();
+        medicalProcedureDTO.setAnimalId(2);
+        medicalProcedureDTO.setVeterinarianId(1L);
+        medicalProcedureDTO.setDescription("vaccination");
+        medicalProcedureService.create(medicalProcedureDTO);
     }
 
     private void createVeterinarians() {
