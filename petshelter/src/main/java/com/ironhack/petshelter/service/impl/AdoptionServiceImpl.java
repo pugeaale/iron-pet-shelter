@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.service.impl;
 
+import com.ironhack.petshelter.dto.AdoptionDTO;
 import com.ironhack.petshelter.model.Adopter;
 import com.ironhack.petshelter.model.Adoption;
 import com.ironhack.petshelter.model.Animal;
@@ -32,16 +33,16 @@ public class AdoptionServiceImpl implements AdoptionService {
 
     @Transactional
     @Override
-    public Adoption create(Integer animalId, Long adopterId, LocalDate date) {
-        log.info("Saving new Adoption to the database [animalId:"+animalId+", adopterId:"+adopterId+"]");
-        Animal animal = animalService.getAnimalById(animalId);
+    public Adoption create(AdoptionDTO adoptionDTO) {
+        log.info("Saving new Adoption to the database [animalId:"+adoptionDTO.getAnimalId()+", adopterId:"+adoptionDTO.getAdopterId()+"]");
+        Animal animal = animalService.getAnimalById(adoptionDTO.getAnimalId());
         if( animal == null )
             return null;
-        Adopter adopter = adopterService.getAdopterById(adopterId);
+        Adopter adopter = adopterService.getAdopterById(adoptionDTO.getAdopterId());
         if( adopter == null )
             return null;
         Adoption adoption = new Adoption();
-        adoption.setDate(date);
+        adoption.setDate(adoptionDTO.getDate());
         adoption.setAnimal(animal);
         adoption.setAdopter(adopter);
         return adoptionRepository.save(adoption);

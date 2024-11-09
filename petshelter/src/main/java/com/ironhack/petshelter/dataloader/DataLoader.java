@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.dataloader;
 
+import com.ironhack.petshelter.dto.AdoptionDTO;
 import com.ironhack.petshelter.dto.MedicalProcedureDTO;
 import com.ironhack.petshelter.model.*;
 import com.ironhack.petshelter.service.*;
@@ -51,7 +52,11 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createAdoptions() {
-        adoptionService.create(2,3L, LocalDate.now());
+        AdoptionDTO adoptionDTO = new AdoptionDTO();
+        adoptionDTO.setAnimalId(2);
+        adoptionDTO.setAdopterId(3L);
+        adoptionDTO.setDate(LocalDate.now());
+        adoptionService.create(adoptionDTO);
     }
 
     private void addAnimalsToShelter() {
