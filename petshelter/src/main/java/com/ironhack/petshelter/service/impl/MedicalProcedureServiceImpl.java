@@ -1,5 +1,6 @@
 package com.ironhack.petshelter.service.impl;
 
+import com.ironhack.petshelter.dto.MedicalProcedureDTO;
 import com.ironhack.petshelter.model.*;
 import com.ironhack.petshelter.repository.MedicalProcedureRepository;
 import com.ironhack.petshelter.service.AnimalService;
@@ -41,18 +42,18 @@ public class MedicalProcedureServiceImpl implements MedicalProcedureService {
 
     @Transactional
     @Override
-    public MedicalProcedure create(Integer animalId, Long veterinarianId, String description) {
-        log.info("Saving new Medical Procedure to the database [animalId:"+animalId+", veterinarianId:"+veterinarianId+"]");
-        Animal animal = animalService.getAnimalById(animalId);
+    public MedicalProcedure create(MedicalProcedureDTO medicalProcedureDTO) {
+        log.info("Saving new Medical Procedure to the database [animalId:"+medicalProcedureDTO.getAnimalId()+", veterinarianId:"+medicalProcedureDTO.getVeterinarianId()+"]");
+        Animal animal = animalService.getAnimalById(medicalProcedureDTO.getAnimalId());
         if( animal == null )
             return null;
-        Veterinarian veterinarian = veterinarianService.getVeterinarianById(veterinarianId);
+        Veterinarian veterinarian = veterinarianService.getVeterinarianById(medicalProcedureDTO.getVeterinarianId());
         if( veterinarian == null )
             return null;
         MedicalProcedure medicalProcedure = new MedicalProcedure();
         medicalProcedure.setAnimal(animal);
         medicalProcedure.setVeterinarian(veterinarian);
-        medicalProcedure.setDescription(description);
+        medicalProcedure.setDescription(medicalProcedureDTO.getDescription());
         animal.getMedicalProcedures().add(medicalProcedure);
         animalService.saveAnimal(animal);
         veterinarian.getMedicalProcedures().add(medicalProcedure);

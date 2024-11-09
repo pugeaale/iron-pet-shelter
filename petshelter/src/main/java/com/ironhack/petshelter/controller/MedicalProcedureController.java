@@ -1,7 +1,9 @@
 package com.ironhack.petshelter.controller;
 
+import com.ironhack.petshelter.dto.MedicalProcedureDTO;
 import com.ironhack.petshelter.model.MedicalProcedure;
 import com.ironhack.petshelter.service.MedicalProcedureService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -51,13 +53,11 @@ public class MedicalProcedureController {
     /**
      * Save a new medical procedure
      *
-     * @param animalId the animal id
-     * @param veterinarianId the veterinarian id
      */
     @PostMapping("/medical-procedures")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createMedicalProcedure(@RequestBody Integer animalId, Long veterinarianId, String description) {
-        medicalProcedureService.create(animalId, veterinarianId, description);
+    public MedicalProcedure createMedicalProcedure(@RequestBody @Valid MedicalProcedureDTO medicalProcedureDTO) {
+        return medicalProcedureService.create(medicalProcedureDTO);
     }
 
     /**
