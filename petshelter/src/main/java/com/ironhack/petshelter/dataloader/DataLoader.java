@@ -8,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Slf4j
 @Component
@@ -39,27 +38,37 @@ public class DataLoader implements CommandLineRunner {
         createDogs();
         createCats();
 
-        shelterService.addAnimalToShelter(1,7L);
+        addAnimalsToShelter();
 
-        shelterService.addEmployeeToShelter(5L,7L);
+        addEmployeesToShelters();
 
-        adoptionService.create(2,3L, LocalDate.now());
+        createAdoptions();
 
         createMedicalProcedures();
 
         createUsers();
     }
 
+    private void createAdoptions() {
+        adoptionService.create(2,3L, LocalDate.now());
+    }
+
+    private void addAnimalsToShelter() {
+        shelterService.addAnimalToShelter(1,7L);
+    }
+
+    private void addEmployeesToShelters() {
+        shelterService.addEmployeeToShelter(5L,7L);
+    }
+
     private void createMedicalProcedures() {
-        medicalProcedureService.create(2, 1L, "vaccin 1");
-        medicalProcedureService.create(1, 1L, "vaccin 2");
-        medicalProcedureService.create(2, 2L, "vaccin 3");
-        List<MedicalProcedure> medicalProcedures = medicalProcedureService.getMedicalProcedures();
-        log.info("medicalProcedures found : {}", medicalProcedures.size());
+        medicalProcedureService.create(2, 1L, "vaccinnation");
+        medicalProcedureService.create(1, 1L, "microchipping");
+        medicalProcedureService.create(2, 2L, "parasite treatment");
     }
 
     private void createVeterinarians() {
-        createVet("hugo house", "lyon", "0123456799", "hhouse");
+        createVet("sara tancredi", "lyon", "0177456799", "tanc");
         createVet("gregory house", "paris", "0123456789", "ghouse");
     }
 
@@ -69,7 +78,7 @@ public class DataLoader implements CommandLineRunner {
         veterinarian.setCity(city);
         veterinarian.setPhoneNumber(number);
         veterinarian.setUsername(username);
-        veterinarian.setPassword("1234");
+        veterinarian.setPassword("{noop}1234");
         veterinarianService.save(veterinarian);
         roleService.addRoleToUser(username, "ROLE_VETERINARIAN");
     }
@@ -86,8 +95,8 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createEmployees() {
-        createEmployee("naa men", "anam", "aze");
-        createEmployee("tereza men", "mendt", "tereza");
+        createEmployee("Julia Mendoza", "anam", "aze@gmail.com");
+        createEmployee("Tereza Guzman", "mendt", "tereza@outlook.com");
     }
 
     private void createEmployee(String name, String username, String email) {
@@ -102,8 +111,8 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createAdopters() {
-        createAdopter("brigitte bardot", "bardo", "eee");
-        createAdopter("angela guzman", "aguz", "dddddd");
+        createAdopter("Brigitte Bardot", "bardo", "eee");
+        createAdopter("Saul Goodman", "sgood", "dddddd");
     }
 
     private void createAdopter(String name, String username, String phone) {
@@ -111,7 +120,7 @@ public class DataLoader implements CommandLineRunner {
         adopter.setName(name);
         adopter.setUsername(username);
         adopter.setPhoneNumber(phone);
-        adopter.setPassword("1234");
+        adopter.setPassword("{noop}1234");
         adopterService.save(adopter);
         roleService.addRoleToUser(username, "ROLE_ADOPTER");
     }
@@ -126,8 +135,8 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createShelters() {
-        createShelter("Shelter1", "paris", "shelter");
-        createShelter("shelter2", "lyon", "shel2");
+        createShelter("SPA 75", "paris", "spa");
+        createShelter("SPA 69", "lyon", "spaol");
     }
 
     private void createShelter(String name, String city, String username) {
@@ -135,17 +144,20 @@ public class DataLoader implements CommandLineRunner {
         shelter.setName(name);
         shelter.setCity(city);
         shelter.setUsername(username);
-        shelter.setPassword("1234");
+        shelter.setPassword("{noop}1234");
         shelterService.save(shelter);
         roleService.addRoleToUser(shelter.getUsername(), "ROLE_SHELTER");
     }
 
     private void createCats() {
-        createCar("Cat1", "maine coon");
-        createCar("cat2", "siamois");
+        createCat("vodka", "maine coon");
+        createCat("jujul", "siamese");
+        createCat("whisky", "bengual");
+        createCat("patoche", "persian");
+        createCat("lechat", "sphynx");
     }
 
-    private void createCar(String name, String breed) {
+    private void createCat(String name, String breed) {
         Cat cat = new Cat();
         cat.setName(name);
         cat.setBreed(breed);
@@ -153,8 +165,11 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void createDogs() {
-        createDog("Dog", "berger allemand");
+        createDog("goldie", "golden retriever");
         createDog("Maya", "american staff");
+        createDog("rosebee", "english bulldog");
+        createDog("chippie", "chihuahua");
+        createDog("dog", "beagle");
     }
 
     private void createDog(String name, String breed) {
