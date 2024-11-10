@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Inheritance(strategy=InheritanceType.JOINED)
 @NoArgsConstructor
 public class Animal {
 

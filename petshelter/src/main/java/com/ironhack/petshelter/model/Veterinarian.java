@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
+@PrimaryKeyJoinColumn(name="id")
 @NoArgsConstructor
 public class Veterinarian extends User {
 
