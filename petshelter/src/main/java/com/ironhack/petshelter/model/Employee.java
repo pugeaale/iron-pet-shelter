@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @NoArgsConstructor
+@PrimaryKeyJoinColumn(name="id")
 public class Employee extends User {
 
     @NotEmpty(message = "employee email must be not empty")

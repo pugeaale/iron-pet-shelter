@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@PrimaryKeyJoinColumn(name="id")
 @Data
 @NoArgsConstructor
 public class Shelter extends User {
