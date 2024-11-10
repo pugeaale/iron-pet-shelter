@@ -12,6 +12,8 @@ Finally, shelter employees or volunteers record various activities, such as clea
 
 ## Class diagram
 
+![UML Class Diagram](ressources/petshelterdiagram.png)
+
 ## Setup
 
 1. **Clone the repository:**
@@ -319,21 +321,30 @@ Get animals by shelter
 
 ## Future work
 
-+ Frontend
-+ Security
++ Frontend (Vaadin)
++ Mobile App (android, iOS)
++ Improve Security management
++ Add log employee tracking
++ Implement log animal activities
++ Refactoring adoption workflow
++ Handle http result on delete request
++ Test unit (controller and service layer)
++ Integration with Heroku
 
+## Presentation
 
-## Extra links
-
-+ Slides
++ [Slides](ressources/Ironhack%20Backend%20bootcamp.pdf)
 
 ## Ressources
 
-+ Spring boot
-+ Spring security
-+ Spring web
-+ JPA
-+ JAVA
++ [Spring](https://spring.io/projects/spring-security)
++ [Spring Security Documentation](https://spring.io/projects/spring-security)
++ [Baeldung](https://www.baeldung.com/)
++ [Jakarta validation constraints](https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary.html)
++ [W3 School](https://www.w3schools.com/java/)
++ [Spring Boot Documentation](https://docs.spring.io/spring-boot/index.html)  
++ [Spring Data JPA](https://spring.io/projects/spring-data-jpa)  
++ [Lombok](https://projectlombok.org/)
 
 ## Team members
 
